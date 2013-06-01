@@ -1,0 +1,29 @@
+﻿
+<div class="large-9 push-3 columns">
+    <h1>You are here</h1>
+    <h4 class="subheader">Browse through Austin's best, brightest and most creative people.</h4>
+    <hr />
+    <div class="row">
+        <div class="large-12 columns">
+            <ul class="large-block-grid-4">
+                <li ng-repeat="person in people">
+                    <p><strong><a href="{{ person.url }}">{{person.name}}</a></strong></p>
+                    <p>{{person.bio}}</p>
+                    <span class="radius secondary label">{{ person.location.displayName }}</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="large-3 pull-9 columns">
+    <ul class="side-nav">
+        <li ng-repeat="category in categories">
+            <a href="{{ category.url }}">{{ category.displayName }}s</a>
+        </li>
+        <li class="divider"></li>
+        <li ng-repeat="location in location">
+            <a href="{{ location.url }}">{{ location.displayName }}</a>
+        </li>
+    </ul>
+</div>
