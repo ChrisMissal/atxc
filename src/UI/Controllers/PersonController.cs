@@ -21,8 +21,10 @@ namespace UI.Controllers
 
         public async Task<Person>Get(string id)
         {
-            return (await Session.Query<Person>().ToListAsync())
-                .FirstOrDefault(p => p.PersonId == id);
+            var person = (await Session.Query<Person>().ToListAsync()).FirstOrDefault(p => p.PersonId == id);
+            if (person != null)
+                person.ImageUrl = person.GetImageUrl();
+            return person;
         }
 
         public async Task<HttpResponseMessage> Post(PersonForm form)

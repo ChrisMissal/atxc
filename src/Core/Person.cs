@@ -35,5 +35,8 @@ namespace Core
         {
             get { return Name.ToSlug(); }
         }
+
+        [JsonIgnore]
+        public string ImageUrl { get; set; }
     }
 }
