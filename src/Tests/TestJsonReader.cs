@@ -1,8 +1,8 @@
-using System;
-using Newtonsoft.Json;
-
 namespace Tests
 {
+    using System;
+    using Newtonsoft.Json;
+
     public class TestJsonReader : JsonReader
     {
         private readonly object _testValue;

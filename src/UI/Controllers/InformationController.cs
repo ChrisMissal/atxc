@@ -1,31 +1,21 @@
-using System.Linq;
-using System.Threading.Tasks;
-using Core;
-using Core.Enumeration;
-using Raven.Client;
-
 namespace UI.Controllers
 {
-    public class InformationController : RavenDbController
+    using System.Threading.Tasks;
+    using Core.Features.PersonInformation;
+    using MediatR;
+
+    public class InformationController : BaseController
     {
-        public class Information
+        private readonly IMediator _mediator;
+
+        public InformationController(IMediator mediator)
         {
-            public virtual int NumberOfPeople { get; set; }
-            public virtual int NumberOfCategories { get; set; }
-            public virtual int NumberOfLocations { get; set; }
+            _mediator = mediator;
         }
 
         public async Task<Information> Get()
         {
-            var peopleCount = await Session.Query<Person>()
-                .Where(x => x.Approved.HasValue).CountAsync();
-
-            return new Information
-            {
-                NumberOfPeople = peopleCount,
-                NumberOfCategories = Category.GetAll().Count(),
-                NumberOfLocations = Location.GetAll().Count(),
-            };
+            return await _mediator.SendAsync(new PersonInformationQuery());
         }
     }
 }

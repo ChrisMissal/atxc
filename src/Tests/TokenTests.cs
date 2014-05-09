@@ -1,8 +1,8 @@
-﻿using Core;
-using Shouldly;
-
-namespace Tests
+﻿namespace Tests
 {
+    using Core;
+    using Shouldly;
+
     public class TokenTests
     {
         public void Token_should_produce_correct_strings()

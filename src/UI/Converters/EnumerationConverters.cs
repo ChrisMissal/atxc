@@ -1,9 +1,9 @@
-using System;
-using Core.Enumeration;
-using Newtonsoft.Json;
-
 namespace UI.Converters
 {
+    using System;
+    using Core.Enumeration;
+    using Newtonsoft.Json;
+
     public class LinkConverter : EnumerationConverter<Link>
     {
         public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)

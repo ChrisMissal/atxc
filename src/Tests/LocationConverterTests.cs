@@ -1,11 +1,11 @@
-using Core;
-using Core.Enumeration;
-using Newtonsoft.Json;
-using Shouldly;
-using UI.Converters;
-
 namespace Tests
 {
+    using Core.Entities;
+    using Core.Enumeration;
+    using Newtonsoft.Json;
+    using Shouldly;
+    using UI.Converters;
+
     public class LocationConverterTests
     {
         private readonly JsonConverter _locationConverter;

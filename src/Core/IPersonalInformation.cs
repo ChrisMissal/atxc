@@ -1,10 +1,13 @@
-using System.Collections.Generic;
-using Core.Enumeration;
-
 namespace Core
 {
+    using System;
+    using System.Collections.Generic;
+    using Enumeration;
+
     public interface IPersonalInformation
     {
+        Guid Id { get; }
+
         string Name { get; }
 
         string Bio { get; }

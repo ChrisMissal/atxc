@@ -1,7 +1,7 @@
-using Core.Enumeration;
-
 namespace UI.Controllers
 {
+    using Core.Enumeration;
+
     public class LocationController : EnumerationController<Location>
     {
     }

@@ -1,29 +1,38 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Threading.Tasks;
-using Core;
-using Core.Validation;
-using Raven.Client;
-using UI.Models;
-
-namespace UI.Controllers
+﻿namespace UI.Controllers
 {
-    public class PersonController : RavenDbController
+    using System.Collections.Generic;
+    using System.Net;
+    using System.Net.Http;
+    using System.Net.Http.Formatting;
+    using System.Threading.Tasks;
+    using AutoMapper;
+    using Core;
+    using Core.Entities;
+    using Core.Features.People;
+    using Core.Validation;
+    using MediatR;
+    using Models;
+
+    public class PersonController : BaseController
     {
+        // todo: replace with FluentValidation
         private static readonly PersonalInformationValidator Validator = new PersonalInformationValidator();
+        private readonly IMediator _mediator;
+
+        public PersonController(IMediator mediator)
+        {
+            _mediator = mediator;
+        }
 
         public async Task<IList<Person>> Get()
         {
-            return await Session.Query<Person>().ToListAsync();
+            return await _mediator.SendAsync(new PersonQuery());
         }
 
         public async Task<Person>Get(string id)
         {
-            var person = (await Session.Query<Person>().ToListAsync()).FirstOrDefault(p => p.PersonId == id);
-            if (person != null)
-                person.ImageUrl = person.GetImageUrl();
+            var person = await _mediator.SendAsync(new SinglePersonQuery(id));
+            person.ImageUrl = person.GetImageUrl();
             return person;
         }
 
@@ -31,10 +40,13 @@ namespace UI.Controllers
         {
             if (Validator.IsValid(form))
             {
-                var person = form.ToPerson();
-                await Session.StoreAsync(person);
+                var request = Mapper.Map<CreatePersonRequest>(form);
+                var person = await _mediator.SendAsync(request);
 
-                return new HttpResponseMessage(HttpStatusCode.Created);
+                return new HttpResponseMessage(HttpStatusCode.Created)
+                {
+                    Content = new ObjectContent(typeof(IPersonalInformation), person, new JsonMediaTypeFormatter())
+                };
             }
             return new HttpResponseMessage(HttpStatusCode.BadRequest);
         }

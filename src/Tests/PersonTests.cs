@@ -1,16 +1,16 @@
-using Core;
-using Core.Enumeration;
-using Shouldly;
-
 namespace Tests
 {
+    using Core.Entities;
+    using Core.Enumeration;
+    using Shouldly;
+
     public class PersonTests
     {
-        public void Creative_should_produce_correct_link()
+        public void Person_should_produce_correct_link()
         {
-            var creative = new Person {Name = "John Doe", Bio = "i'm neat", Location = Location.Austin};
+            var person = new Person { Name = "John Doe", Bio = "i'm neat", Location = Location.Austin };
 
-            creative.Url.ShouldBe("#/profile/john-doe");
+            person.Url.ShouldBe("#/profile/john-doe");
         }
     }
 }

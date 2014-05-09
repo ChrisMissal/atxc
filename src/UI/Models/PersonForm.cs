@@ -1,11 +1,15 @@
-using System.Collections.Generic;
-using Core;
-using Core.Enumeration;
-
 namespace UI.Models
 {
+    using System;
+    using System.Collections.Generic;
+    using Core;
+    using Core.Entities;
+    using Core.Enumeration;
+
     public class PersonForm : IPersonalInformation
     {
+        public virtual Guid Id { get; private set; }
+
         public virtual string Name { get; set; }
 
         public virtual string Bio { get; set; }

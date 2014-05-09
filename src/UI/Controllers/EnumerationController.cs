@@ -3,7 +3,7 @@ using Core.Enumeration;
 
 namespace UI.Controllers
 {
-    public abstract class EnumerationController<T> : RavenDbController where T : SlugEnumeration<T>
+    public abstract class EnumerationController<T> : BaseController where T : SlugEnumeration<T>
     {
         public IEnumerable<T> Get()
         {
