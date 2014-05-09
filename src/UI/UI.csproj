@@ -183,7 +183,6 @@
     <Compile Include="Controllers\LocationController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\InformationController.cs" />
-    <Compile Include="Converters\EnumerationConverters.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

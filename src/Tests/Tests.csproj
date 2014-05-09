@@ -59,7 +59,6 @@
   <ItemGroup>
     <Compile Include="CategoryTests.cs" />
     <Compile Include="PersonTests.cs" />
-    <Compile Include="LocationConverterTests.cs" />
     <Compile Include="TestJsonReader.cs" />
     <Compile Include="TokenTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
