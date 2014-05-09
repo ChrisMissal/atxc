@@ -5,7 +5,7 @@
 
     public class MappingConfig
     {
-        public static void Register(Container container)
+        public static void Register(IContainer container)
         {
             var mappingProfiles = container.GetAllInstances<Profile>();
 

@@ -4,7 +4,7 @@
     using AutoMapper;
     using Controllers;
     using Core.Entities;
-    using Mappings;
+    using FluentValidation;
     using MediatR;
     using Microsoft.Practices.ServiceLocation;
     using Resolvers;
@@ -12,7 +12,7 @@
 
     public static class Bootstrapper
     {
-        public static void BootstrapApplication(HttpConfiguration config)
+        public static IContainer BootstrapApplication(HttpConfiguration config)
         {
             var container = new Container(cfg => cfg.Scan(scanner =>
             {
@@ -27,6 +27,7 @@
                 scanner.AddAllTypesOf(typeof(INotificationHandler<>));
                 scanner.AddAllTypesOf(typeof(IAsyncNotificationHandler<>));
                 scanner.AddAllTypesOf<Profile>();
+                scanner.AddAllTypesOf(typeof(IValidator<>));
             }));
 
             var serviceLocator = new StructureMapServiceLocator(container);
@@ -35,7 +36,7 @@
 
             config.DependencyResolver = new StructureMapResolver(container);
 
-            MappingConfig.Register(container);
+            return container;
         }
 
         public static void ValidateApplication()

@@ -2,11 +2,8 @@ namespace UI.Models
 {
     using System;
     using System.Collections.Generic;
-    using Core;
-    using Core.Entities;
-    using Core.Enumeration;
 
-    public class PersonForm : IPersonalInformation
+    public class PersonForm
     {
         public virtual Guid Id { get; private set; }
 
@@ -16,25 +13,10 @@ namespace UI.Models
 
         public virtual string Email { get; set; }
 
-        public virtual Location Location { get; set; }
+        public virtual string Location { get; set; }
 
-        public virtual List<Link> Links { get; set; }
+        public virtual List<string> Links { get; set; }
 
-        public virtual List<Category> Categories { get; set; }
-
-        public Person ToPerson()
-        {
-            return new Person
-            {
-                Name = Name,
-                Bio = Bio,
-                Email = Email,
-                Location = Location,
-                Links = Links,
-                Categories = Categories,
-
-                Joined = SystemClock.UtcNow,
-            };
-        }
+        public virtual List<string> Categories { get; set; }
     }
 }

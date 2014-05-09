@@ -9,14 +9,12 @@
     using Core;
     using Core.Entities;
     using Core.Features.People;
-    using Core.Validation;
     using MediatR;
     using Models;
+    using Validation;
 
     public class PersonController : BaseController
     {
-        // todo: replace with FluentValidation
-        private static readonly PersonalInformationValidator Validator = new PersonalInformationValidator();
         private readonly IMediator _mediator;
 
         public PersonController(IMediator mediator)
@@ -36,19 +34,16 @@
             return person;
         }
 
+        [ValidationResponseFilter]
         public async Task<HttpResponseMessage> Post(PersonForm form)
         {
-            if (Validator.IsValid(form))
-            {
-                var request = Mapper.Map<CreatePersonRequest>(form);
-                var person = await _mediator.SendAsync(request);
+            var request = Mapper.Map<CreatePersonRequest>(form);
+            var person = await _mediator.SendAsync(request);
 
-                return new HttpResponseMessage(HttpStatusCode.Created)
-                {
-                    Content = new ObjectContent(typeof(IPersonalInformation), person, new JsonMediaTypeFormatter())
-                };
-            }
-            return new HttpResponseMessage(HttpStatusCode.BadRequest);
+            return new HttpResponseMessage(HttpStatusCode.Created)
+            {
+                Content = new ObjectContent(typeof(IPersonalInformation), person, new JsonMediaTypeFormatter())
+            };
         }
     }
 }

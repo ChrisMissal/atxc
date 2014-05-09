@@ -5,6 +5,7 @@
     using System.Web.Mvc;
     using System.Web.Optimization;
     using System.Web.Routing;
+    using Mappings;
 
     public class WebApiApplication : HttpApplication
     {
@@ -12,7 +13,7 @@
         {
             var config = GlobalConfiguration.Configuration;
 
-            Bootstrapper.BootstrapApplication(config);
+            var container = Bootstrapper.BootstrapApplication(config);
 
             AreaRegistration.RegisterAllAreas();
 
@@ -21,6 +22,9 @@
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+
+            MappingConfig.Register(container);
+            ValidationConfig.Register(container);
 
             Bootstrapper.ValidateApplication();
         }
