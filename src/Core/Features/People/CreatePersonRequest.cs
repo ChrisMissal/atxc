@@ -2,10 +2,11 @@ namespace Core.Features.People
 {
     using System;
     using System.Collections.Generic;
+    using Entities;
     using Enumeration;
     using MediatR;
 
-    public class CreatePersonRequest : IAsyncRequest<IPersonalInformation>, IPersonalInformation
+    public class CreatePersonRequest : IAsyncRequest<Person>, IPersonalInformation
     {
         public Guid Id { get; private set; }
 

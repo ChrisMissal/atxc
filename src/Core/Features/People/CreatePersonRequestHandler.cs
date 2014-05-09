@@ -1,9 +1,11 @@
 namespace Core.Features.People
 {
+    using System;
     using System.Threading.Tasks;
+    using Entities;
     using MediatR;
 
-    public class CreatePersonRequestHandler : IAsyncRequestHandler<CreatePersonRequest, IPersonalInformation>
+    public class CreatePersonRequestHandler : IAsyncRequestHandler<CreatePersonRequest, Person>
     {
         private readonly IMediator _mediator;
 
@@ -12,12 +14,21 @@ namespace Core.Features.People
             _mediator = mediator;
         }
 
-        public Task<IPersonalInformation> Handle(CreatePersonRequest message)
+        public Task<Person> Handle(CreatePersonRequest message)
         {
             // todo: create a person
             return Task.Factory.StartNew(() =>
             {
-                var person = (IPersonalInformation) message;
+                var person = new Person
+                {
+                    Bio = message.Bio,
+                    Categories = message.Categories,
+                    Email = message.Email,
+                    Joined = SystemClock.UtcNow,
+                    Links = message.Links,
+                    Location = message.Location,
+                    Name = message.Name,
+                };
                 _mediator.PublishAsync(new PersonCreatedNotification(person.Id));
                 return person;
             });

@@ -1,12 +1,8 @@
 ﻿namespace UI.Controllers
 {
     using System.Collections.Generic;
-    using System.Net;
-    using System.Net.Http;
-    using System.Net.Http.Formatting;
     using System.Threading.Tasks;
     using AutoMapper;
-    using Core;
     using Core.Entities;
     using Core.Features.People;
     using MediatR;
@@ -27,7 +23,7 @@
             return await _mediator.SendAsync(new PersonQuery());
         }
 
-        public async Task<Person>Get(string id)
+        public async Task<Person> Get(string id)
         {
             var person = await _mediator.SendAsync(new SinglePersonQuery(id));
             person.ImageUrl = person.GetImageUrl();
@@ -35,15 +31,12 @@
         }
 
         [ValidationResponseFilter]
-        public async Task<HttpResponseMessage> Post(PersonForm form)
+        public async Task<Person> Post(PersonForm form)
         {
             var request = Mapper.Map<CreatePersonRequest>(form);
             var person = await _mediator.SendAsync(request);
-
-            return new HttpResponseMessage(HttpStatusCode.Created)
-            {
-                Content = new ObjectContent(typeof(IPersonalInformation), person, new JsonMediaTypeFormatter())
-            };
+            person.ImageUrl = person.GetImageUrl();
+            return person;
         }
     }
 }

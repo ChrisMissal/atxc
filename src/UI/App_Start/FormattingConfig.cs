@@ -10,6 +10,7 @@ namespace UI
         private static readonly JsonSerializerSettings _settings = new JsonSerializerSettings
         {
             ContractResolver = new CamelCasePropertyNamesContractResolver(),
+            Formatting = Formatting.Indented,
         };
 
         public static void Register(HttpConfiguration configuration)
