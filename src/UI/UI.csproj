@@ -60,6 +60,9 @@
     <Reference Include="GravatarHelper">
       <HintPath>..\packages\GravatarHelper.3.2.2\lib\Net40\GravatarHelper.dll</HintPath>
     </Reference>
+    <Reference Include="Iesi.Collections">
+      <HintPath>..\packages\Iesi.Collections.3.2.0.1001\lib\Net35\Iesi.Collections.dll</HintPath>
+    </Reference>
     <Reference Include="MediatR">
       <HintPath>..\packages\MediatR.0.3.0.0\lib\portable-net40+sl50+wp80+win+MonoAndroid10+MonoTouch10\MediatR.dll</HintPath>
     </Reference>
@@ -77,11 +80,17 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Newtonsoft.Json.4.5.11\lib\net40\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="NHibernate">
+      <HintPath>..\packages\NHibernate.3.3.3.4001\lib\Net35\NHibernate.dll</HintPath>
+    </Reference>
     <Reference Include="StructureMap">
       <HintPath>..\packages\structuremap.3.0.3.116\lib\net40\StructureMap.dll</HintPath>
     </Reference>
     <Reference Include="StructureMap.Net4">
       <HintPath>..\packages\structuremap.3.0.3.116\lib\net40\StructureMap.Net4.dll</HintPath>
+    </Reference>
+    <Reference Include="StructureMap.Web">
+      <HintPath>..\packages\structuremap.web.3.0.0.108\lib\net40\StructureMap.Web.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
@@ -161,6 +170,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\Mappings\EnumerationResolver.cs" />
+    <Compile Include="App_Start\Transactions\NHibernateRegistry.cs" />
+    <Compile Include="App_Start\Transactions\TransactionAttribute.cs" />
     <Compile Include="App_Start\ValidationConfig.cs" />
     <Compile Include="Validation\ValidationResponseFilterAttribute.cs" />
     <Compile Include="App_Start\Bootstrapper.cs" />

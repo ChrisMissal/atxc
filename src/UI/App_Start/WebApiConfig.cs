@@ -1,7 +1,8 @@
-﻿using System.Web.Http;
-
-namespace UI
+﻿namespace UI
 {
+    using System.Web.Http;
+    using Transactions;
+
     public static class WebApiConfig
     {
         public static void Register(HttpConfiguration config)
@@ -11,6 +12,8 @@ namespace UI
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new {id = RouteParameter.Optional}
                 );
+
+            config.Filters.Add(new TransactionAttribute());
         }
     }
 }

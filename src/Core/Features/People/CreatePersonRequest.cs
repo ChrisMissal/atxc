@@ -1,6 +1,5 @@
 namespace Core.Features.People
 {
-    using System;
     using System.Collections.Generic;
     using Entities;
     using Enumeration;
@@ -8,7 +7,9 @@ namespace Core.Features.People
 
     public class CreatePersonRequest : IAsyncRequest<Person>, IPersonalInformation
     {
-        public Guid Id { get; private set; }
+        public int Id { get; private set; }
+
+        public string Slug { get; private set; }
 
         public string Name { get; private set; }
 

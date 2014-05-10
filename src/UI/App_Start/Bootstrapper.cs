@@ -28,9 +28,12 @@
                 scanner.AddAllTypesOf(typeof(IAsyncNotificationHandler<>));
                 scanner.AddAllTypesOf<Profile>();
                 scanner.AddAllTypesOf(typeof(IValidator<>));
+                scanner.LookForRegistries();
             }));
 
             var serviceLocator = new StructureMapServiceLocator(container);
+            ServiceLocator.SetLocatorProvider(() => serviceLocator);
+
             var serviceLocatorProvider = new ServiceLocatorProvider(() => serviceLocator);
             container.Configure(cfg => cfg.For<ServiceLocatorProvider>().Use(serviceLocatorProvider));
 

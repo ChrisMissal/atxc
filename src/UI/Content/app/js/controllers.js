@@ -16,7 +16,8 @@ function PersonCreateCtrl($scope, Category, Location, Person) {
     $scope.categories = Category.all();
     $scope.locations = Location.all();
     $scope.selectedCategories = [];
-    $scope.selectCategory = function (category) {
+    $scope.selectCategory = function (categoryResource) {
+        var category = categoryResource.value;
         if ($scope.selectedCategories.indexOf(category) === -1) {
             $scope.selectedCategories.push(category);
         } else {
@@ -25,7 +26,10 @@ function PersonCreateCtrl($scope, Category, Location, Person) {
     };
     $scope.save = function () {
         console.log($scope.profile);
+        var location = $scope.profile.location.value;
+        $scope.profile.location = location;
         $scope.profile.categories = $scope.selectedCategories;
+        $scope.profile.links = [];
         Person.save($scope.profile);
     };
 }

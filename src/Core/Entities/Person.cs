@@ -6,7 +6,11 @@
 
     public class Person : ILinkable, IPersonalInformation
     {
-        public virtual Guid Id { get; protected set; }
+        private string _personId;
+
+        public virtual int Id { get; protected set; }
+
+        public virtual string Slug { get; set; }
 
         public virtual string Name { get; set; }
 
@@ -24,16 +28,11 @@
 
         public virtual DateTime? Approved { get; set; }
 
-        public string Url
+        public virtual string Url
         {
             get { return string.Format("#/profile/{0}", Name.ToSlug()); }
         }
 
-        public string PersonId
-        {
-            get { return Name.ToSlug(); }
-        }
-
-        public string ImageUrl { get; set; }
+        public virtual string ImageUrl { get; set; }
     }
 }
