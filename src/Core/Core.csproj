@@ -55,6 +55,7 @@
     <Reference Include="System.Net" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entities\PeopleCollection.cs" />
     <Compile Include="Entities\Person.cs" />
     <Compile Include="Features\People\PersonCreatedNotification.cs" />
     <Compile Include="Features\PersonInformation\Information.cs" />

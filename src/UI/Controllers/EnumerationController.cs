@@ -5,14 +5,14 @@ namespace UI.Controllers
 {
     public abstract class EnumerationController<T> : BaseController where T : SlugEnumeration<T>
     {
-        public IEnumerable<T> Get()
+        public virtual IEnumerable<T> Get()
         {
             return SlugEnumeration<T>.GetAll();
         }
 
-        public T Get(string id)
+        /*public virtual T Get(string id)
         {
             return SlugEnumeration<T>.FromValue(id);
-        }
+        }*/
     }
 }

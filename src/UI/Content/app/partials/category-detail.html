@@ -3,3 +3,6 @@
 
 {{ category.people }}
 
+<ul ng-repeat="person in category.people">
+    <li><a href="{{ person.url }}">{{ person.name }}</a></li>
+</ul>
