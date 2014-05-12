@@ -63,12 +63,20 @@
     <Reference Include="System.Net" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Constants.cs" />
     <Compile Include="Data\ConfigurationFactory.cs" />
+    <Compile Include="Data\Mappings\CategoryFieldMapping.cs" />
+    <Compile Include="Data\Mappings\FieldMapping.cs" />
+    <Compile Include="Data\Mappings\LinkFieldMapping.cs" />
     <Compile Include="Data\Mappings\LocationType.cs" />
     <Compile Include="Data\Mappings\Mapping.cs" />
-    <Compile Include="Data\Mappings\PersonMap.cs" />
+    <Compile Include="Data\Mappings\PersonMapping.cs" />
+    <Compile Include="Entities\CategoryField.cs" />
+    <Compile Include="Entities\Field.cs" />
+    <Compile Include="Entities\LinkField.cs" />
     <Compile Include="Entities\PeopleCollection.cs" />
     <Compile Include="Entities\Person.cs" />
+    <Compile Include="Enumeration\ISlugEnumeration.cs" />
     <Compile Include="Features\People\PersonCreatedNotification.cs" />
     <Compile Include="Features\PersonInformation\Information.cs" />
     <Compile Include="Features\PersonInformation\PersonInformationQuery.cs" />
@@ -80,8 +88,8 @@
     <Compile Include="Features\People\SinglePersonQuery.cs" />
     <Compile Include="Features\People\SinglePersonQueryHandler.cs" />
     <Compile Include="IEntity.cs" />
+    <Compile Include="IField.cs" />
     <Compile Include="SystemClock.cs" />
-    <Compile Include="IPersonalInformation.cs" />
     <Compile Include="Enumeration\Category.cs" />
     <Compile Include="Enumeration\Enumeration.cs" />
     <Compile Include="Enumeration\Link.cs" />

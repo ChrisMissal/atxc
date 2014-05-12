@@ -8,7 +8,7 @@ namespace Core.Enumeration
         public static readonly Category Photographer = new Category("Photographer");
         public static readonly Category Musician = new Category("Musician");
 
-        public Category(string displayName) : base(displayName)
+        private Category(string displayName) : base(displayName)
         {
         }
     }

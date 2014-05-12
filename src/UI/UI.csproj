@@ -169,6 +169,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Start\Mappings\EnumerationProfile.cs" />
     <Compile Include="App_Start\Mappings\EnumerationResolver.cs" />
     <Compile Include="App_Start\Transactions\NHibernateRegistry.cs" />
     <Compile Include="App_Start\Transactions\TransactionAttribute.cs" />

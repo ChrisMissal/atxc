@@ -1,6 +1,6 @@
 ﻿namespace Core.Enumeration
 {
-    public abstract class SlugEnumeration<T> : Enumeration<T, string>, ILinkable where T : Enumeration<T, string>
+    public abstract class SlugEnumeration<T> : Enumeration<T, string>, ISlugEnumeration, ILinkable where T : Enumeration<T, string>
     {
         protected SlugEnumeration(string displayName) : base(displayName.ToSlug(), displayName)
         {
@@ -10,6 +10,6 @@
             Url = string.Format("#/{0}/{1}", type, slug);
         }
 
-        public string Url { get; private set; }
+        public virtual string Url { get; private set; }
     }
 }

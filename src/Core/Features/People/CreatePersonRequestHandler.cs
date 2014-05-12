@@ -23,14 +23,15 @@ namespace Core.Features.People
                 var person = new Person
                 {
                     Bio = message.Bio,
-                    Categories = message.Categories,
                     Email = message.Email,
                     Joined = SystemClock.UtcNow,
-                    Links = message.Links,
                     Location = message.Location,
                     Name = message.Name,
                     Slug = message.Name.ToSlug(),
                 };
+                person.AddCategories(message.Categories);
+                person.AddLinks(message.Links);
+
                 _session.SaveOrUpdate(person);
                 _mediator.PublishAsync(new PersonCreatedNotification(person.Id));
                 return person;

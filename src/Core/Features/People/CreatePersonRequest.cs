@@ -5,7 +5,7 @@ namespace Core.Features.People
     using Enumeration;
     using MediatR;
 
-    public class CreatePersonRequest : IAsyncRequest<Person>, IPersonalInformation
+    public class CreatePersonRequest : IAsyncRequest<Person>, IEntity
     {
         public int Id { get; private set; }
 
@@ -19,8 +19,8 @@ namespace Core.Features.People
 
         public Location Location { get; private set; }
 
-        public List<Link> Links { get; private set; }
+        public List<LinkField> Links { get; private set; }
 
-        public List<Category> Categories { get; private set; }
+        public List<CategoryField> Categories { get; private set; }
     }
 }

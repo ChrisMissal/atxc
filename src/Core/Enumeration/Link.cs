@@ -6,11 +6,11 @@ namespace Core.Enumeration
         public static readonly Link Facebook = new Link("http://www.facebook.com/{0}", "Facebook");
         public static readonly Link LinkedIn = new Link("http://www.linkedin.com/in/{0}", "LinkedIn");
 
-        public Link(string urlFormat, string displayName) : base(displayName)
+        private Link(string urlFormat, string displayName) : base(displayName)
         {
             UrlFormat = urlFormat;
         }
 
-        public string UrlFormat { get; set; }
+        public virtual string UrlFormat { get; set; }
     }
 }

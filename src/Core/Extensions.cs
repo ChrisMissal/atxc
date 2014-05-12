@@ -23,6 +23,19 @@ namespace Core
             foreach (var item in self) action(item);
         }
 
+        public static void TryAdd<T>(this ICollection<T> self, T item)
+        {
+            if (self.Contains(item))
+                return;
+
+            self.Add(item);
+        }
+
+        public static void TryAddRange<T>(this ICollection<T> self, IEnumerable<T> range)
+        {
+            range.ForEach(self.TryAdd);
+        }
+
         public static bool IsSubclassOfRawGeneric(this Type toCheck, Type generic)
         {
             while (toCheck != null && toCheck != typeof(object))

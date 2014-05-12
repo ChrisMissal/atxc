@@ -43,22 +43,22 @@ namespace Core.Enumeration
             _displayName = displayName;
         }
 
-        public TValue Value
+        public virtual TValue Value
         {
             get { return _value; }
         }
 
-        public string DisplayName
+        public virtual string DisplayName
         {
             get { return _displayName; }
         }
 
-        public int CompareTo(TEnumeration other)
+        public virtual int CompareTo(TEnumeration other)
         {
             return Value.CompareTo(other.Value);
         }
 
-        public override sealed string ToString()
+        public override string ToString()
         {
             return DisplayName;
         }
@@ -84,7 +84,7 @@ namespace Core.Enumeration
             return Equals(obj as TEnumeration);
         }
 
-        public bool Equals(TEnumeration other)
+        public virtual bool Equals(TEnumeration other)
         {
             return other != null && Value.Equals(other.Value);
         }
