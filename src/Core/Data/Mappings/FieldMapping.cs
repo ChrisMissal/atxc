@@ -1,30 +1,38 @@
 namespace Core.Data.Mappings
 {
+    using Entities;
     using NHibernate.Mapping.ByCode.Conformist;
 
     public abstract class FieldMapping<T> : ClassMapping<T> where T : class, IField
     {
         protected FieldMapping()
         {
-            Table(typeof(T).Name);
-            ComposedId(m =>
-            {
-                m.Property(x => x.PersonId);
-                m.Property(x => x.Value);
-            });
-            Property(x => x.PersonId);
-            Property(x => x.Value);
+            Table(GetTableName());
 
-            Property(x => x.Created, m =>
+            ComposedId(x =>
             {
-                m.NotNullable(true);
-                m.Column(cm =>
-                {
-                    cm.Default("getdate()");
-                    cm.SqlType("datetime2");
-                });
+                x.Property(p => p.Value, m => m.UniqueKey("PersonValue"));
             });
+            Property(x => x.Value, m => m.UniqueKey("PersonValue"));
+            Property(x => x.Value);
+            ManyToOne(x => x.Person, m =>
+            {
+                m.Column(PersonMapping.GetIdColumnName());
+                m.NotNullable(true);
+                m.Class(typeof(Person));
+                m.UniqueKey("PersonValue");
+            });
+            Property(x => x.Created, m => m.Column(cm =>
+            {
+                cm.SqlType("datetime2");
+                cm.NotNullable(true);
+            }));
             Property(x => x.Deleted, m => m.Column(cm => cm.SqlType("datetime2")));
+        }
+
+        public static string GetTableName()
+        {
+            return typeof (T).Name;
         }
     }
 }

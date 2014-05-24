@@ -76,7 +76,6 @@
     <Compile Include="Entities\LinkField.cs" />
     <Compile Include="Entities\PeopleCollection.cs" />
     <Compile Include="Entities\Person.cs" />
-    <Compile Include="Enumeration\ISlugEnumeration.cs" />
     <Compile Include="Features\People\PersonCreatedNotification.cs" />
     <Compile Include="Features\PersonInformation\Information.cs" />
     <Compile Include="Features\PersonInformation\PersonInformationQuery.cs" />

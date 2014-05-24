@@ -10,8 +10,13 @@
             Id(x => x.Id, m =>
             {
                 m.Generator(Generators.HighLow);
-                m.Column(typeof(T).Name + "Id");
+                m.Column(GetIdColumnName());
             });
+        }
+
+        public static string GetIdColumnName()
+        {
+            return typeof (T).Name + "Id";
         }
     }
 }

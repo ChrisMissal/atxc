@@ -30,13 +30,20 @@
             Property(x => x.Approved, m => m.Column(cm => cm.SqlType("datetime2")));
             Property(x => x.Deleted, m => m.Column(cm => cm.SqlType("datetime2")));
 
-            Property(x => x.Categories);
-            /*Set(x => x.Categories, m =>
+            Bag(x => x.Categories, c =>
             {
-                m.Type<CategoryField>();
-                m.Fetch(CollectionFetchMode.Join);
-                m.Filter("NonDeletedCategories", f => f.Condition("(Deleted is null)"));
-            });*/
+                c.Cascade(Cascade.All);
+                c.Inverse(true);
+                c.Key(k => k.Column(GetIdColumnName()));
+
+            }, r =>
+            {
+                r.OneToMany(m =>
+                {
+                    m.NotFound(NotFoundMode.Exception);
+                    m.Class(typeof (CategoryField));
+                });
+            });
         }
     }
 }

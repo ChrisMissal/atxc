@@ -5,6 +5,8 @@ using System.Text.RegularExpressions;
 
 namespace Core
 {
+    using Entities;
+
     [DebuggerStepThrough]
     public static class Extensions
     {
@@ -23,17 +25,19 @@ namespace Core
             foreach (var item in self) action(item);
         }
 
-        public static void TryAdd<T>(this ICollection<T> self, T item)
+        public static void TryAdd<T>(this ICollection<T> self, Person person, T item) where T : IField
         {
             if (self.Contains(item))
                 return;
 
+            item.Person = person;
+            item.Created = SystemClock.UtcNow;
             self.Add(item);
         }
 
-        public static void TryAddRange<T>(this ICollection<T> self, IEnumerable<T> range)
+        public static void TryAddRange<T>(this ICollection<T> self, IEnumerable<T> range, Person person) where T : IField
         {
-            range.ForEach(self.TryAdd);
+            range.ForEach(obj => self.TryAdd(person, obj));
         }
 
         public static bool IsSubclassOfRawGeneric(this Type toCheck, Type generic)

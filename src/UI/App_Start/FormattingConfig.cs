@@ -11,6 +11,7 @@ namespace UI
         {
             ContractResolver = new CamelCasePropertyNamesContractResolver(),
             Formatting = Formatting.Indented,
+            ReferenceLoopHandling = ReferenceLoopHandling.Ignore,
         };
 
         public static void Register(HttpConfiguration configuration)

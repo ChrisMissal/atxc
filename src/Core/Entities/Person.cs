@@ -6,6 +6,9 @@
 
     public class Person : ILinkable, IEntity, IDeletable
     {
+        private IList<CategoryField> _categories;
+        private IList<LinkField> _links;
+
         public Person()
         {
             Links = new List<LinkField>();
@@ -24,9 +27,9 @@
 
         public virtual Location Location { get; set; }
 
-        public virtual List<LinkField> Links { get; protected set; }
+        public virtual IList<LinkField> Links { get; protected set; }
 
-        public virtual List<CategoryField> Categories { get; protected set; }
+        public virtual IList<CategoryField> Categories { get; protected set; }
 
         public virtual DateTime Joined { get; set; }
 
@@ -41,9 +44,9 @@
 
         public virtual string ImageUrl { get; set; }
 
-        public virtual void AddCategories(List<CategoryField> categories)
+        public virtual void AddCategories(IList<CategoryField> categories)
         {
-            Categories.TryAddRange(categories);
+            Categories.TryAddRange(categories, this);
         }
 
         public virtual void RemoveCategory(CategoryField category)
@@ -52,9 +55,9 @@
                 category.Deleted = SystemClock.UtcNow;
         }
 
-        public virtual void AddLinks(List<LinkField> links)
+        public virtual void AddLinks(IEnumerable<LinkField> links)
         {
-            Links.TryAddRange(links);
+            Links.TryAddRange(links, this);
         }
 
         public virtual void RemoveLink(LinkField link)

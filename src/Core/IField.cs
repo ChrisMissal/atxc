@@ -1,6 +1,7 @@
 namespace Core
 {
     using System;
+    using Entities;
 
     public interface IDeletable
     {
@@ -9,8 +10,8 @@ namespace Core
 
     public interface IField : IDeletable
     {
-        int PersonId { get; }
-        string Value { get; }
-        DateTime Created { get; }
+        Person Person { get; set; }
+        string Value { get; set; }
+        DateTime? Created { get; set; }
     }
 }
