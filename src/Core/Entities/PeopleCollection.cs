@@ -12,6 +12,6 @@
 
         public string DisplayName { get; private set; }
 
-        public List<Person> People { get; set; }
+        public IList<PersonSummary> People { get; set; }
     }
 }

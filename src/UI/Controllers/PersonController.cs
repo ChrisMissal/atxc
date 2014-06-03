@@ -18,25 +18,29 @@
             _mediator = mediator;
         }
 
-        public async Task<IList<Person>> Get()
+        public async Task<IList<PersonSummary>> Get()
         {
-            return await _mediator.SendAsync(new PersonQuery());
+            var people = await _mediator.SendAsync(new PersonQuery());
+
+            return Mapper.Map<List<PersonSummary>>(people);
         }
 
-        public async Task<Person> Get(string id)
+        public async Task<PersonSummary> Get(string id)
         {
             var person = await _mediator.SendAsync(new SinglePersonQuery(id));
+
             person.ImageUrl = person.GetImageUrl();
+
             return person;
         }
 
         [ValidationResponseFilter]
-        public async Task<Person> Post(PersonForm form)
+        public async Task<PersonSummary> Post(PersonForm form)
         {
             var request = Mapper.Map<CreatePersonRequest>(form);
             var person = await _mediator.SendAsync(request);
-            person.ImageUrl = person.GetImageUrl();
-            return person;
+
+            return Mapper.Map<PersonSummary>(person);
         }
     }
 }

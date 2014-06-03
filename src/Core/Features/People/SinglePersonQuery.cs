@@ -3,7 +3,7 @@
     using Entities;
     using MediatR;
 
-    public class SinglePersonQuery : IAsyncRequest<Person>
+    public class SinglePersonQuery : IAsyncRequest<PersonSummary>
     {
         public SinglePersonQuery(string id)
         {

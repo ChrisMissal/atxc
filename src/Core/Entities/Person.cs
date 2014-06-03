@@ -4,7 +4,7 @@
     using System.Collections.Generic;
     using Enumeration;
 
-    public class Person : ILinkable, IEntity, IDeletable
+    public class Person : IEntity, IDeletable, IHaveEmail
     {
         private IList<CategoryField> _categories;
         private IList<LinkField> _links;
@@ -36,11 +36,6 @@
         public virtual DateTime? Approved { get; set; }
 
         public virtual DateTime? Deleted { get; set; }
-
-        public virtual string Url
-        {
-            get { return string.Format("#/profile/{0}", Name.ToSlug()); }
-        }
 
         public virtual string ImageUrl { get; set; }
 

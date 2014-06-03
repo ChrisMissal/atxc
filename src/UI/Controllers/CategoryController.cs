@@ -1,23 +1,30 @@
 namespace UI.Controllers
 {
-    using System.Collections.Generic;
+    using System.Threading.Tasks;
+    using Core;
     using Core.Entities;
     using Core.Enumeration;
+    using Core.Features.People;
+    using MediatR;
 
     public class CategoryController : EnumerationController<Category>
     {
-        public PeopleCollection<Category> Get(string id)
+        private readonly IMediator _mediator;
+
+        public CategoryController(IMediator mediator)
         {
-            var type = Category.FromValue(id);
-            var result = new PeopleCollection<Category>(type)
-            {
-                People = new List<Person>
-                {
-                    new Person {Name = "Chris Missal", Location = Location.Austin},
-                    new Person {Name = "Darby McGillicutty", Location = Location.Austin},
-                }
-            };
-            return result;
+            _mediator = mediator;
+        }
+
+        public async Task<PeopleCollection<Category>> Get(string id)
+        {
+            var category = Category.FromValue(id);
+            var query = new PeopleByCategoryQuery { Category = category };
+            var collection = await _mediator.SendAsync(query);
+
+            collection.People.ForEach(p => { p.ImageUrl = p.GetImageUrl(); });
+
+            return collection;
         }
     }
 }

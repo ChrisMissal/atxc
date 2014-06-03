@@ -5,11 +5,11 @@
     using Entities;
     using MediatR;
 
-    public class PersonQueryHandler : IAsyncRequestHandler<PersonQuery, List<Person>>
+    public class PersonQueryHandler : IAsyncRequestHandler<PersonQuery, List<PersonSummary>>
     {
-        public Task<List<Person>> Handle(PersonQuery message)
+        public Task<List<PersonSummary>> Handle(PersonQuery message)
         {
-            return Task.Factory.StartNew(() => new List<Person>());
+            return Task.Factory.StartNew(() => new List<PersonSummary>());
         }
     }
 }

@@ -4,7 +4,7 @@
     using Entities;
     using MediatR;
 
-    public class PersonQuery : IAsyncRequest<List<Person>>
+    public class PersonQuery : IAsyncRequest<List<PersonSummary>>
     {
     }
 }
