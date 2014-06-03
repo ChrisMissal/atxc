@@ -7,7 +7,7 @@ namespace Tests
     {
         public void Category_should_produce_correct_link()
         {
-            Category.Developer.Url.ShouldBe("/category/developer");
+            Category.Developer.Url.ShouldBe("#/category/developer");
         }
     }
 }
