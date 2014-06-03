@@ -6,9 +6,6 @@
 
     public class Person : IEntity, IDeletable, IHaveEmail
     {
-        private IList<CategoryField> _categories;
-        private IList<LinkField> _links;
-
         public Person()
         {
             Links = new List<LinkField>();

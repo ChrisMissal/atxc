@@ -43,10 +43,6 @@
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\UI\Bin\Newtonsoft.Json.dll</HintPath>
     </Reference>
-    <Reference Include="Raven.Client.Lightweight, Version=2.0.3.0, Culture=neutral, PublicKeyToken=37f41c7f99471593, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\RavenDB.Client.2.0.2375\lib\net40\Raven.Client.Lightweight.dll</HintPath>
-    </Reference>
     <Reference Include="Shouldly">
       <HintPath>..\packages\Shouldly.1.1.1.1\lib\35\Shouldly.dll</HintPath>
     </Reference>
@@ -59,7 +55,6 @@
   <ItemGroup>
     <Compile Include="CategoryTests.cs" />
     <Compile Include="PersonSummaryTests.cs" />
-    <Compile Include="TestJsonReader.cs" />
     <Compile Include="TokenTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -75,10 +70,6 @@
     <ProjectReference Include="..\Core\Core.csproj">
       <Project>{08F0E9D0-D27F-4D19-BED7-F69679791C7D}</Project>
       <Name>Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\UI\UI.csproj">
-      <Project>{BCEABBF2-706B-4D5B-8F32-BBD25B567A57}</Project>
-      <Name>UI</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

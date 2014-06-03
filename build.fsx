@@ -23,12 +23,12 @@ Target "Debug" (fun _ ->
         |> Log "AppBuild-Output: "
 )
 
-Target "BuildTest" (fun _ ->
+Target "BuildUnitTests" (fun _ ->
     MSBuildDebug testBuildDir "Build" testReferences
         |> Log "TestBuild-Output: "
 )
 
-Target "Test" (fun _ ->
+Target "UnitTests" (fun _ ->
     !! (testBuildDir @@ "Tests.dll") 
         |> Fixie (fun p -> p)
 )
@@ -46,10 +46,14 @@ Target "AssemblyInfo" (fun _ ->
         Attribute.ComVisible false ]
 )
 
+Target "Default" DoNothing
+
 "Clean"
   ==> "Debug"
+  ==> "Default"
 
-"BuildTest"
-  ==> "Test"
+"BuildUnitTests"
+  ==> "UnitTests"
+  ==> "Default"
 
-RunTargetOrDefault "Clean"
+RunTargetOrDefault "Default"
