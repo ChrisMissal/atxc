@@ -32,7 +32,7 @@
             var mapping = GetMappings();
             _configuration.AddDeserializedMapping(mapping, "schema");
             SchemaMetadataUpdater.QuoteTableAndColumns(_configuration);
-            new SchemaExport(_configuration).SetOutputFile(@"c:\temp\atxc_schema.ddl").Execute(true, true, false);
+            new SchemaExport(_configuration).SetOutputFile(@"c:\temp\atxc_schema.ddl").Execute(false, false, false);
             _sessionFactoryBuilder = _configuration.BuildSessionFactory();
         }
 
