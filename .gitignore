@@ -36,6 +36,7 @@ x64/
 *.vspscc
 *.vssscc
 .builds
+build/*
 
 # Visual C++ cache files
 ipch/
@@ -109,3 +110,7 @@ UpgradeLog*.XML
 
 # Configuration files to hide from source control
 Local.config
+
+# tools that will be downloaded
+tools/roundhouse/*
+tools/FAKE.Core/*
