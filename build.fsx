@@ -4,6 +4,7 @@
 open Fake 
 open Fake.AssemblyInfoFile
 open Fake.FixieHelper
+open Fake.Git.Information
 open System
 
 let projectName = "ATX Creatives"
@@ -19,32 +20,43 @@ let testBuildDir = "./publish/test"
 let appReferences  = !! "src/UI/*.csproj"
 let testReferences = !! "src/Tests/*.csproj"
 
-Target "Debug" (fun _ ->
+Target "debug" (fun _ ->
     MSBuildDebug buildDir "Build" appReferences
         |> Log "AppBuild-Output: "
 )
 
-Target "BuildUnitTests" (fun _ ->
+Target "buildunittests" (fun _ ->
     MSBuildDebug testBuildDir "Build" testReferences
         |> Log "TestBuild-Output: "
 )
 
-Target "UnitTests" (fun _ ->
+Target "unittests" (fun _ ->
     !! (testBuildDir @@ "Tests.dll") 
         |> Fixie (fun p -> p)
 )
 
-Target "MigrateDb" (fun _ ->
-    Roundhouse (fun p -> { p with 
-        SqlFilesDirectory = ".\database"
-        DatabaseName = "atxc" })
+Target "drop" (fun _ ->
+    Roundhouse (fun p -> 
+        { p with
+            Silent = false
+            DatabaseName = "atxc"
+            Drop = true })
 )
 
-Target "Clean" (fun _ ->
+Target "migrate" (fun _ ->
+    Roundhouse (fun p ->
+        { p with
+            SqlFilesDirectory = ".\src\Database"
+            RepositoryPath = "http://github.com/ChrisMissal/atxc"
+            WarnOnOneTimeScriptChanges = true
+            DatabaseName = "atxc" })
+)
+
+Target "clean" (fun _ ->
     CleanDirs [buildDir]
 )
 
-Target "AssemblyInfo" (fun _ ->
+Target "assemblyinfo" (fun _ ->
     CreateCSharpAssemblyInfo "src/UI/Properties/AssemblyInfo.cs"
       [ Attribute.Product projectName
         Attribute.Version version
@@ -53,17 +65,14 @@ Target "AssemblyInfo" (fun _ ->
         Attribute.ComVisible false ]
 )
 
-Target "Default" DoNothing
+Target "default" DoNothing
 
-"MigrateDb"
-  ==> "Default"
+"clean"
+  ==> "debug"
+  ==> "default"
 
-"Clean"
-  ==> "Debug"
-  ==> "Default"
+"buildunittests"
+  ==> "unittests"
+  ==> "default"
 
-"BuildUnitTests"
-  ==> "UnitTests"
-  ==> "Default"
-
-RunTargetOrDefault "Default"
+RunTargetOrDefault "default"
