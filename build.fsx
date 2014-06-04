@@ -1,4 +1,6 @@
 #r @"tools\FAKE.Core\tools\FakeLib.dll"
+#load @"RoundhouseHelper.fs";;
+
 open Fake 
 open Fake.AssemblyInfoFile
 open Fake.FixieHelper
@@ -13,7 +15,6 @@ let copyright = "Copyright © 2013 - " + DateTime.UtcNow.Year.ToString()
 let rh = "./tools/roundhouse/rh.exe"
 let buildDir = "./publish/build"
 let testBuildDir = "./publish/test"
-let testDir = "./"
 
 let appReferences  = !! "src/UI/*.csproj"
 let testReferences = !! "src/Tests/*.csproj"
@@ -33,6 +34,12 @@ Target "UnitTests" (fun _ ->
         |> Fixie (fun p -> p)
 )
 
+Target "MigrateDb" (fun _ ->
+    Roundhouse (fun p -> { p with 
+        SqlFilesDirectory = ".\database"
+        DatabaseName = "atxc" })
+)
+
 Target "Clean" (fun _ ->
     CleanDirs [buildDir]
 )
@@ -47,6 +54,9 @@ Target "AssemblyInfo" (fun _ ->
 )
 
 Target "Default" DoNothing
+
+"MigrateDb"
+  ==> "Default"
 
 "Clean"
   ==> "Debug"
