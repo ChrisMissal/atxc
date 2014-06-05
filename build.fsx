@@ -64,6 +64,12 @@ Target "deletedata" (fun _ ->
             NoLoad = true })
 )
 
+Target "reloaddata" (fun _ ->
+    DataLoader (fun p ->
+        { p with
+            Delete = true })
+)
+
 Target "clean" (fun _ ->
     CleanDirs [buildDir]
 )
