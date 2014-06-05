@@ -1,5 +1,6 @@
 #r @"tools\FAKE.Core\tools\FakeLib.dll"
 #load @"RoundhouseHelper.fs";;
+#load @"DataLoaderHelper.fs";;
 
 open Fake 
 open Fake.AssemblyInfoFile
@@ -50,6 +51,17 @@ Target "migrate" (fun _ ->
             RepositoryPath = "http://github.com/ChrisMissal/atxc"
             WarnOnOneTimeScriptChanges = true
             DatabaseName = "atxc" })
+)
+
+Target "loaddata" (fun _ ->
+    DataLoader (fun p -> p)
+)
+
+Target "deletedata" (fun _ ->
+    DataLoader (fun p ->
+        { p with
+            Delete = true
+            NoLoad = true })
 )
 
 Target "clean" (fun _ ->
