@@ -1,4 +1,4 @@
-﻿namespace DataLoader
+﻿namespace DataLoader.Generators
 {
     using System;
     using System.Linq;

@@ -1,9 +1,8 @@
-﻿namespace DataLoader
+﻿namespace DataLoader.Loaders
 {
     using Core;
     using Core.Entities;
     using NHibernate;
-    using NHibernate.Linq;
     using Ploeh.AutoFixture;
 
     internal class PersonLoader : Loader<Person>

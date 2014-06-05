@@ -1,4 +1,4 @@
-﻿namespace DataLoader
+﻿namespace DataLoader.Loaders
 {
     internal interface ILoader
     {

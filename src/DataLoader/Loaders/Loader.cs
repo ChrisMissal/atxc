@@ -1,4 +1,4 @@
-﻿namespace DataLoader
+﻿namespace DataLoader.Loaders
 {
     using NHibernate;
     using NHibernate.Linq;
