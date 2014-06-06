@@ -17,6 +17,11 @@
             if (pi == null || pi.PropertyType != typeof(T))
                 return new NoSpecimen(request);
 
+            return GetRandom();
+        }
+
+        public T GetRandom()
+        {
             return _enumerations.ElementAt(_random.Next(_enumerations.Length));
         }
     }
