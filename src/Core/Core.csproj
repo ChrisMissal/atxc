@@ -79,6 +79,8 @@
     <Compile Include="Entities\PersonSummary.cs" />
     <Compile Include="Features\People\PeopleByCategoryQuery.cs" />
     <Compile Include="Features\People\PeopleByCategoryQueryHandler.cs" />
+    <Compile Include="Features\People\PeopleByLocationQuery.cs" />
+    <Compile Include="Features\People\PeopleByLocationQueryHandler.cs" />
     <Compile Include="Features\People\PersonCreatedNotification.cs" />
     <Compile Include="Features\PersonInformation\Information.cs" />
     <Compile Include="Features\PersonInformation\PersonInformationQuery.cs" />

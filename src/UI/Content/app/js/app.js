@@ -7,6 +7,8 @@ angular.module('people', ['personServices', 'categoryServices', 'locationService
             when('/add-profile', { templateUrl: partialsDir + 'profile-add.html', controller: PersonCreateCtrl }).
             when('/category', { templateUrl: partialsDir + 'category-list.html', controller: CategoryListCtrl }).
             when('/category/:id', { templateUrl: partialsDir + 'category-detail.html', controller: CategoryDetailCtrl }).
+            when('/location', { templateUrl: partialsDir + 'location-list.html', controller: LocationListCtrl }).
+            when('/location/:id', { templateUrl: partialsDir + 'location-detail.html', controller: LocationDetailCtrl }).
             when('/profile', { templateUrl: partialsDir + 'profile-list.html', controller: PersonListCtrl }).
             when('/profile/:id', { templateUrl: partialsDir + 'profile-detail.html', controller: PersonDetailCtrl }).
             otherwise({ redirectTo: '/' });

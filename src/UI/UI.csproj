@@ -208,6 +208,8 @@
   <ItemGroup>
     <Content Include="Content\app\partials\category-detail.html" />
     <Content Include="Content\app\partials\category-list.html" />
+    <Content Include="Content\app\partials\location-list.html" />
+    <Content Include="Content\app\partials\location-detail.html" />
     <Content Include="Content\app\partials\profile-add.html" />
     <Content Include="Content\app\partials\index.html" />
     <Content Include="Content\app\partials\profile-list.html" />

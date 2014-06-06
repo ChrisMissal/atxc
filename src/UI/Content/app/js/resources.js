@@ -19,7 +19,8 @@ angular.module('personServices', ['ngResource']).
 angular.module('locationServices', ['ngResource']).
     factory('Location', function($resource) {
         return $resource('/api/location/:id', { id: '@id' }, {
-            all: { method: 'GET', isArray: true }
+            all: { method: 'GET', isArray: true },
+            first: { method: 'GET' }
         });
     });
 

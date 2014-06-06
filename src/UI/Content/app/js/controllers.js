@@ -41,3 +41,11 @@ function CategoryListCtrl($scope, Category) {
 function CategoryDetailCtrl($scope, $routeParams, Category) {
     $scope.category = Category.first($routeParams);
 }
+
+function LocationListCtrl($scope, Location) {
+    $scope.locations = Location.all();
+}
+
+function LocationDetailCtrl($scope, $routeParams, Location) {
+    $scope.location = Location.first($routeParams);
+}
