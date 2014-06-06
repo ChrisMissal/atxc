@@ -6,7 +6,7 @@ GO
 
 CREATE VIEW [dbo].[PersonView]
 AS
-SELECT Name, Email, Slug, Location
-FROM dbo.Person
-WHERE Approved is not null and Deleted is null
+SELECT p.[Name], p.[Email], p.[Slug], p.[Location]
+FROM dbo.Person p
+WHERE p.[Approved] IS NOT NULL AND p.[Deleted] IS NULL
 GO
