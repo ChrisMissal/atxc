@@ -14,6 +14,9 @@ let projectSummary = "www.atxcreatives.com"
 let version = "0.0.0"
 let copyright = "Copyright © 2013 - " + DateTime.UtcNow.Year.ToString()
 
+let dbName = "atxc"
+let dbServer = ".\SQLEXPRESS"
+
 let rh = "./tools/roundhouse/rh.exe"
 let buildDir = "./publish/build"
 let testBuildDir = "./publish/test"
@@ -40,7 +43,8 @@ Target "drop" (fun _ ->
     Roundhouse (fun p -> 
         { p with
             Silent = false
-            DatabaseName = "atxc"
+            ServerDatabase = dbServer
+            DatabaseName = dbName
             Drop = true })
 )
 
@@ -50,7 +54,8 @@ Target "migrate" (fun _ ->
             SqlFilesDirectory = ".\src\Database"
             RepositoryPath = "http://github.com/ChrisMissal/atxc"
             WarnOnOneTimeScriptChanges = true
-            DatabaseName = "atxc" })
+            ServerDatabase = dbServer
+            DatabaseName = dbName })
 )
 
 Target "loaddata" (fun _ ->
