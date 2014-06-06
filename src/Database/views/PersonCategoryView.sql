@@ -6,7 +6,7 @@ GO
 
 CREATE VIEW [dbo].[PersonCategoryView]
 AS
-SELECT p.[Name], p.[Email], p.[Slug], p.[Location]
+SELECT p.[Name], p.[Email], p.[Slug], p.[Location], c.[Value] [Category]
 FROM dbo.Person p
 	INNER JOIN CategoryField c ON c.[PersonId] = p.[PersonId]
 WHERE p.[Approved] IS NOT NULL AND p.[Deleted] IS NULL

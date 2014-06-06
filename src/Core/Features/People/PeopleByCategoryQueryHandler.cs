@@ -20,13 +20,15 @@
         {
             return Task.Factory.StartNew(() =>
             {
-                const string sql = "select top 100" +
-                                   "       [Name]" +
-                                   "    ,  [Slug]" +
-                                   "    ,  [Email]" +
-                                   "from PersonView";
+                const string sql = @"select top 100
+                                        [Name]
+                                     ,  [Slug]
+                                     ,  [Email]
+                                     from PersonCategoryView
+                                     where [Category] = :category";
 
                 var people = _session.CreateSQLQuery(sql)
+                    .SetParameter("category", message.Category.Value)
                     .SetResultTransformer(Transformers.AliasToBean<PersonSummary>())
                     .List<PersonSummary>();
 
