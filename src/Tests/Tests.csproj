@@ -54,6 +54,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CategoryTests.cs" />
+    <Compile Include="CoreTests\EntityTests\CategoryFieldTests.cs" />
     <Compile Include="PersonSummaryTests.cs" />
     <Compile Include="TokenTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

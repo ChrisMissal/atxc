@@ -16,7 +16,15 @@
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            return Equals(Person, other.Person) && string.Equals(Value, other.Value);
+            if (string.Equals(Value, other.Value))
+            {
+                if (Person != null && other.Person != null)
+                {
+                    return Person.Id == other.Person.Id;
+                }
+                return true;
+            }
+            return false;
         }
 
         public override int GetHashCode()
@@ -41,7 +49,6 @@
         {
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
-            if (obj.GetType() != typeof (Field<T>)) return false;
             return Equals((Field<T>) obj);
         }
     }
