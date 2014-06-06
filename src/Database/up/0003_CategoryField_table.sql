@@ -3,7 +3,7 @@ create table CategoryField (
    PersonId INT not null,
    Created datetime2 not null,
    Deleted datetime2 null,
-   primary key ([Value]),
+   primary key ([Value], PersonId),
   unique ([Value], PersonId)
 )
 

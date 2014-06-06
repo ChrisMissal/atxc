@@ -11,17 +11,17 @@ namespace Core.Data.Mappings
 
             ComposedId(x =>
             {
-                x.Property(p => p.Value, m => m.UniqueKey("PersonValue"));
+                x.Property(p => p.Value);
+                x.ManyToOne(p => p.Person, m =>
+                {
+                    m.Column(PersonMapping.GetIdColumnName());
+                    m.NotNullable(true);
+                    m.Class(typeof(Person));
+                    m.UniqueKey("PersonValue");
+                });
+                
             });
             Property(x => x.Value, m => m.UniqueKey("PersonValue"));
-            Property(x => x.Value);
-            ManyToOne(x => x.Person, m =>
-            {
-                m.Column(PersonMapping.GetIdColumnName());
-                m.NotNullable(true);
-                m.Class(typeof(Person));
-                m.UniqueKey("PersonValue");
-            });
             Property(x => x.Created, m => m.Column(cm =>
             {
                 cm.SqlType("datetime2");
