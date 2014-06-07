@@ -9,7 +9,7 @@ angular.module('people', ['personServices', 'categoryServices', 'locationService
             when('/category/:id', { templateUrl: partialsDir + 'category-detail.html', controller: CategoryDetailCtrl }).
             when('/locations', { templateUrl: partialsDir + 'location-list.html', controller: LocationListCtrl }).
             when('/location/:id', { templateUrl: partialsDir + 'location-detail.html', controller: LocationDetailCtrl }).
-            when('/profile', { templateUrl: partialsDir + 'profile-list.html', controller: PersonListCtrl }).
             when('/profile/:id', { templateUrl: partialsDir + 'profile-detail.html', controller: PersonDetailCtrl }).
+            when('/random', { templateUrl: partialsDir + 'profile-detail.html', controller: RandomPersonCtrl }).
             otherwise({ redirectTo: '/' });
     }]);

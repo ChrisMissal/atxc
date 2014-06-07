@@ -1,11 +1,6 @@
-function HomePage($scope, Person, Category, Location) {
-    $scope.people = Person.all();
+function HomePage($scope, Category, Location) {
     $scope.categories = Category.all();
     $scope.location = Location.all();
-}
-
-function PersonListCtrl($scope, Person) {
-    $scope.people = Person.all();
 }
 
 function PersonDetailCtrl($scope, $routeParams, Person) {
@@ -48,4 +43,10 @@ function LocationListCtrl($scope, Location) {
 
 function LocationDetailCtrl($scope, $routeParams, Location) {
     $scope.location = Location.first($routeParams);
+}
+
+function RandomPersonCtrl($window, Person) {
+    Person.first(function(person) {
+        $window.location.href = person.url;
+    });
 }

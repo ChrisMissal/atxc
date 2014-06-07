@@ -1,6 +1,5 @@
 ﻿namespace UI.Controllers
 {
-    using System.Collections.Generic;
     using System.Threading.Tasks;
     using AutoMapper;
     using Core.Entities;
@@ -18,11 +17,11 @@
             _mediator = mediator;
         }
 
-        public async Task<IList<PersonSummary>> Get()
+        public async Task<PersonSummary> Get()
         {
-            var people = await _mediator.SendAsync(new PersonQuery());
+            var person = await _mediator.SendAsync(new RandomPersonQuery());
 
-            return Mapper.Map<List<PersonSummary>>(people);
+            return person;
         }
 
         public async Task<PersonSummary> Get(string id)

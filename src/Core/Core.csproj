@@ -82,13 +82,13 @@
     <Compile Include="Features\People\PeopleByLocationQuery.cs" />
     <Compile Include="Features\People\PeopleByLocationQueryHandler.cs" />
     <Compile Include="Features\People\PersonCreatedNotification.cs" />
+    <Compile Include="Features\People\RandomPersonQuery.cs" />
+    <Compile Include="Features\People\RandomPersonQueryHandler.cs" />
     <Compile Include="Features\PersonInformation\Information.cs" />
     <Compile Include="Features\PersonInformation\PersonInformationQuery.cs" />
     <Compile Include="Features\PersonInformation\PersonInformationQueryHandler.cs" />
     <Compile Include="Features\People\CreatePersonRequest.cs" />
     <Compile Include="Features\People\CreatePersonRequestHandler.cs" />
-    <Compile Include="Features\People\PersonQuery.cs" />
-    <Compile Include="Features\People\PersonQueryHandler.cs" />
     <Compile Include="Features\People\SinglePersonQuery.cs" />
     <Compile Include="Features\People\SinglePersonQueryHandler.cs" />
     <Compile Include="IEntity.cs" />
