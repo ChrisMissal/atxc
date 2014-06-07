@@ -23,16 +23,21 @@ let buildDir = "./publish/build"
 let testBuildDir = "./publish/test"
 
 let appReferences  = !! "src/UI/*.csproj"
-let testReferences = !! "src/Tests/*.csproj"
+let testReferences = !! "src/*Tests/*.csproj"
 
 Target "debug" (fun _ ->
     MSBuildDebug buildDir "Build" appReferences
         |> Log "AppBuild-Output: "
 )
 
-Target "buildunittests" (fun _ ->
+Target "buildtests" (fun _ ->
     MSBuildDebug testBuildDir "Build" testReferences
         |> Log "TestBuild-Output: "
+)
+
+Target "inttests" (fun _ ->
+    !! (testBuildDir @@ "IntegrationTests.dll")
+        |> Fixie (fun p -> p)
 )
 
 Target "unittests" (fun _ ->
@@ -112,7 +117,8 @@ Target "default" DoNothing
   ==> "debug"
   ==> "default"
 
-"buildunittests"
+"buildtests"
+  ==> "inttests"
   ==> "unittests"
   ==> "default"
 
