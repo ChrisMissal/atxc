@@ -35,13 +35,8 @@ Target "buildtests" (fun _ ->
         |> Log "TestBuild-Output: "
 )
 
-Target "inttests" (fun _ ->
-    !! (testBuildDir @@ "IntegrationTests.dll")
-        |> Fixie (fun p -> p)
-)
-
-Target "unittests" (fun _ ->
-    !! (testBuildDir @@ "Tests.dll") 
+Target "tests" (fun _ ->
+    !! (testBuildDir @@ "*Tests.dll")
         |> Fixie (fun p -> p)
 )
 
@@ -99,7 +94,7 @@ Target "reloaddata" (fun _ ->
 )
 
 Target "clean" (fun _ ->
-    CleanDirs [buildDir]
+    CleanDirs [buildDir; testBuildDir]
 )
 
 Target "assemblyinfo" (fun _ ->
@@ -115,11 +110,8 @@ Target "default" DoNothing
 
 "clean"
   ==> "debug"
-  ==> "default"
-
-"buildtests"
-  ==> "inttests"
-  ==> "unittests"
+  ==> "buildtests"
+  ==> "tests"
   ==> "default"
 
 RunTargetOrDefault "default"
