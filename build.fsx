@@ -15,6 +15,7 @@ let version = "0.0.0"
 let copyright = "Copyright © 2013 - " + DateTime.UtcNow.Year.ToString()
 
 let dbName = "atxc"
+let dbTestName = dbName + "_test"
 let dbServer = ".\SQLEXPRESS"
 
 let rh = "./tools/roundhouse/rh.exe"
@@ -37,6 +38,23 @@ Target "buildunittests" (fun _ ->
 Target "unittests" (fun _ ->
     !! (testBuildDir @@ "Tests.dll") 
         |> Fixie (fun p -> p)
+)
+
+Target "migratetest" (fun _ ->
+    Roundhouse (fun p ->
+        { p with
+            SqlFilesDirectory = ".\src\Database"
+            ServerDatabase = dbServer
+            DatabaseName = dbTestName })
+)
+
+Target "droptest" (fun _ ->
+    Roundhouse (fun p -> 
+        { p with
+            Silent = false
+            ServerDatabase = dbServer
+            DatabaseName = dbTestName
+            Drop = true })
 )
 
 Target "drop" (fun _ ->
