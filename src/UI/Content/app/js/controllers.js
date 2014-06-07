@@ -20,7 +20,6 @@ function PersonCreateCtrl($scope, Category, Location, Person) {
         }
     };
     $scope.save = function () {
-        console.log($scope.profile);
         var location = $scope.profile.location.value;
         $scope.profile.location = location;
         $scope.profile.categories = $scope.selectedCategories;
