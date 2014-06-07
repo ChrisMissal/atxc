@@ -176,6 +176,7 @@
     <Compile Include="App_Start\Transactions\NHibernateRegistry.cs" />
     <Compile Include="App_Start\Transactions\TransactionAttribute.cs" />
     <Compile Include="App_Start\ValidationConfig.cs" />
+    <Compile Include="Controllers\ApprovalController.cs" />
     <Compile Include="Validation\ValidationResponseFilterAttribute.cs" />
     <Compile Include="App_Start\Bootstrapper.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
@@ -208,6 +209,7 @@
   <ItemGroup>
     <Content Include="Content\app\partials\category-detail.html" />
     <Content Include="Content\app\partials\category-list.html" />
+    <Content Include="Content\app\partials\approval-detail.html" />
     <Content Include="Content\app\partials\location-list.html" />
     <Content Include="Content\app\partials\location-detail.html" />
     <Content Include="Content\app\partials\profile-add.html" />

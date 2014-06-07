@@ -77,6 +77,9 @@
     <Compile Include="Entities\PeopleCollection.cs" />
     <Compile Include="Entities\Person.cs" />
     <Compile Include="Entities\PersonSummary.cs" />
+    <Compile Include="Entities\ApprovalSummary.cs" />
+    <Compile Include="Features\Approvals\SingleApprovalQuery.cs" />
+    <Compile Include="Features\Approvals\SingleApprovalQueryHandler.cs" />
     <Compile Include="Features\People\PeopleByCategoryQuery.cs" />
     <Compile Include="Features\People\PeopleByCategoryQueryHandler.cs" />
     <Compile Include="Features\People\PeopleByLocationQuery.cs" />

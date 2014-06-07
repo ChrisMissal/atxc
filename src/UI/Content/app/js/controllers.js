@@ -50,3 +50,7 @@ function RandomPersonCtrl($window, Person) {
         $window.location.href = person.url;
     });
 }
+
+function ApprovalDetailCtrl($scope, $routeParams, Approval) {
+    $scope.approval = Approval.first($routeParams);
+}

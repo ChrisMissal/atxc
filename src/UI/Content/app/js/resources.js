@@ -24,5 +24,12 @@ angular.module('locationServices', ['ngResource']).
         });
     });
 
+angular.module('approvalServices', ['ngResource']).
+    factory('Approval', function($resource) {
+        return $resource('/api/approval/:id', { id: '@id' }, {
+            first: { method: 'GET' }
+        });
+    });
+
 // http://docs.angularjs.org/tutorial/step_11
 

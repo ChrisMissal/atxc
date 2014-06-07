@@ -1,6 +1,6 @@
 var partialsDir = 'Content/app/partials/';
 
-angular.module('people', ['personServices', 'categoryServices', 'locationServices']).
+angular.module('people', ['personServices', 'categoryServices', 'locationServices', 'approvalServices']).
     config(['$routeProvider', function ($routeProvider) {
         $routeProvider.
             when('/', { templateUrl: partialsDir + 'index.html', controller: HomePage }).
@@ -11,5 +11,6 @@ angular.module('people', ['personServices', 'categoryServices', 'locationService
             when('/location/:id', { templateUrl: partialsDir + 'location-detail.html', controller: LocationDetailCtrl }).
             when('/profile/:id', { templateUrl: partialsDir + 'profile-detail.html', controller: PersonDetailCtrl }).
             when('/random', { templateUrl: partialsDir + 'profile-detail.html', controller: RandomPersonCtrl }).
+            when('/approval/:id', { templateUrl: partialsDir + 'approval-detail.html', controller: ApprovalDetailCtrl }).
             otherwise({ redirectTo: '/' });
     }]);
