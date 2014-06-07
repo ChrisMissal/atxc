@@ -16,6 +16,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{6E3D67
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataLoader", "DataLoader\DataLoader.csproj", "{6BC08F03-CBD7-46B0-88CC-F8FAB7DBF466}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IntegrationTests", "IntegrationTests\IntegrationTests.csproj", "{FDE5A28E-74D6-4AC1-B4FF-51F84D64C146}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -38,6 +40,10 @@ Global
 		{6BC08F03-CBD7-46B0-88CC-F8FAB7DBF466}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6BC08F03-CBD7-46B0-88CC-F8FAB7DBF466}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6BC08F03-CBD7-46B0-88CC-F8FAB7DBF466}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FDE5A28E-74D6-4AC1-B4FF-51F84D64C146}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FDE5A28E-74D6-4AC1-B4FF-51F84D64C146}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FDE5A28E-74D6-4AC1-B4FF-51F84D64C146}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FDE5A28E-74D6-4AC1-B4FF-51F84D64C146}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

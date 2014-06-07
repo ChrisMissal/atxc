@@ -33,7 +33,6 @@ namespace Core.Features.People
                 person.AddLinks(message.Links);
 
                 _session.SaveOrUpdate(person);
-                _mediator.PublishAsync(new PersonCreatedNotification(person.Id));
                 return person;
             });
         }

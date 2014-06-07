@@ -65,12 +65,14 @@
   <ItemGroup>
     <Compile Include="Constants.cs" />
     <Compile Include="Data\ConfigurationFactory.cs" />
+    <Compile Include="Data\Mappings\ApprovalMapping.cs" />
     <Compile Include="Data\Mappings\CategoryFieldMapping.cs" />
     <Compile Include="Data\Mappings\FieldMapping.cs" />
     <Compile Include="Data\Mappings\LinkFieldMapping.cs" />
     <Compile Include="Data\Mappings\LocationType.cs" />
     <Compile Include="Data\Mappings\Mapping.cs" />
     <Compile Include="Data\Mappings\PersonMapping.cs" />
+    <Compile Include="Entities\Approval.cs" />
     <Compile Include="Entities\CategoryField.cs" />
     <Compile Include="Entities\Field.cs" />
     <Compile Include="Entities\LinkField.cs" />
@@ -85,6 +87,7 @@
     <Compile Include="Features\People\PeopleByLocationQuery.cs" />
     <Compile Include="Features\People\PeopleByLocationQueryHandler.cs" />
     <Compile Include="Features\People\PersonCreatedNotification.cs" />
+    <Compile Include="Features\People\PersonCreatedNotificationHandler.cs" />
     <Compile Include="Features\People\RandomPersonQuery.cs" />
     <Compile Include="Features\People\RandomPersonQueryHandler.cs" />
     <Compile Include="Features\PersonInformation\Information.cs" />

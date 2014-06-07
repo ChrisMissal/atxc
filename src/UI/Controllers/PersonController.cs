@@ -38,6 +38,7 @@
         {
             var request = Mapper.Map<CreatePersonRequest>(form);
             var person = await _mediator.SendAsync(request);
+            _mediator.PublishAsync(new PersonCreatedNotification(person.Id));
 
             return Mapper.Map<PersonSummary>(person);
         }
