@@ -1,9 +1,12 @@
 ﻿namespace Core.Features.PersonInformation
 {
+    using System.Linq;
     using System.Threading.Tasks;
+    using Entities;
     using Enumeration;
     using MediatR;
     using NHibernate;
+    using NHibernate.Linq;
 
     public class PersonInformationQueryHandler : IAsyncRequestHandler<PersonInformationQuery, Information>
     {
@@ -18,8 +21,7 @@
         {
             return Task.Factory.StartNew(() =>
             {
-                const string sql = @"select count(0) [PeopleCount] from Person";
-                var peopleCount = _session.CreateSQLQuery(sql).UniqueResult<int>();
+                var peopleCount = _session.Query<Person>().Count();
 
                 return new Information
                 {

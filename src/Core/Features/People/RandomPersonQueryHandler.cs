@@ -1,9 +1,11 @@
 ﻿namespace Core.Features.People
 {
+    using System.Linq;
     using System.Threading.Tasks;
     using Entities;
     using MediatR;
     using NHibernate;
+    using NHibernate.Linq;
     using NHibernate.Transform;
 
     public class RandomPersonQueryHandler : IAsyncRequestHandler<RandomPersonQuery, PersonSummary>
@@ -19,16 +21,18 @@
         {
             return Task.Factory.StartNew(() =>
             {
-                const string sql = @"select top 1
-                                        [Name]
-                                     ,  [Slug]
-                                     ,  [Email]
-                                     from PersonView p
-                                     order by newid()";
+                var people = _session.Query<Person>()
+                    .OrderBy(x => x.Random)
+                    .Select(x => new PersonSummary
+                    {
+                        Name = x.Name,
+                        Slug = x.Slug,
+                        Email = x.Email,
+                    })
+                    .Take(1)
+                    .First();
 
-                return _session.CreateSQLQuery(sql)
-                    .SetResultTransformer(Transformers.AliasToBean<PersonSummary>())
-                    .UniqueResult<PersonSummary>();
+                return people;
             });
         }
     }

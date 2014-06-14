@@ -15,7 +15,7 @@
             _mediator = mediator;
         }
 
-        public async Task<ApprovalSummary> Get(Guid id)
+        public async Task<ApprovalSummary> Get(string id)
         {
             var approval = await _mediator.SendAsync(new SingleApprovalQuery(id));
 

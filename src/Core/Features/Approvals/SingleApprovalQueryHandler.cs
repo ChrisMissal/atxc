@@ -1,14 +1,16 @@
 namespace Core.Features.Approvals
 {
+    using System.Linq;
     using System.Threading.Tasks;
     using Entities;
     using MediatR;
     using NHibernate;
+    using NHibernate.Linq;
     using NHibernate.Transform;
 
     public class SingleApprovalQueryHandler : IAsyncRequestHandler<SingleApprovalQuery, ApprovalSummary>
     {
-        private ISession _session;
+        private readonly ISession _session;
 
         public SingleApprovalQueryHandler(ISession session)
         {
@@ -17,16 +19,13 @@ namespace Core.Features.Approvals
 
         public Task<ApprovalSummary> Handle(SingleApprovalQuery message)
         {
-            return Task.Factory.StartNew(() =>
-            {
-                const string sql = @"select top 1 newid() [Id]";
-
-                var approval = _session.CreateSQLQuery(sql)
-                    .SetResultTransformer(Transformers.AliasToBean<ApprovalSummary>())
-                    .UniqueResult<ApprovalSummary>();
-
-                return approval;
-            });
+            return Task.Factory.StartNew(() => _session.Query<Approval>()
+                .Where(x => x.Slug == message.Id)
+                .Select(x => new ApprovalSummary
+                {
+                    Slug = x.Slug,
+                })
+                .SingleOrDefault());
         }
     }
 }

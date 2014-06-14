@@ -1,10 +1,12 @@
 ﻿namespace Core.Features.People
 {
+    using System.Linq;
     using System.Threading.Tasks;
     using Entities;
     using Enumeration;
     using MediatR;
     using NHibernate;
+    using NHibernate.Linq;
     using NHibernate.Transform;
 
     public class PeopleByCategoryQueryHandler : IAsyncRequestHandler<PeopleByCategoryQuery, PeopleCollection<Category>>
@@ -20,17 +22,16 @@
         {
             return Task.Factory.StartNew(() =>
             {
-                const string sql = @"select top 100
-                                        [Name]
-                                     ,  [Slug]
-                                     ,  [Email]
-                                     from PersonCategoryView
-                                     where [Category] = :category";
-
-                var people = _session.CreateSQLQuery(sql)
-                    .SetParameter("category", message.Category.Value)
-                    .SetResultTransformer(Transformers.AliasToBean<PersonSummary>())
-                    .List<PersonSummary>();
+                var people = _session.Query<CategoryField>()
+                    .Where(x => x.Value == message.Category.Value)
+                    .Select(x => new PersonSummary
+                    {
+                        Name = x.Person.Name,
+                        Slug = x.Person.Slug,
+                        Email = x.Person.Email,
+                    })
+                    .Take(100)
+                    .ToList();
 
                 return new PeopleCollection<Category>(message.Category)
                 {

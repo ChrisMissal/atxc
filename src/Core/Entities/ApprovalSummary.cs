@@ -1,9 +1,7 @@
 ﻿namespace Core.Entities
 {
-    using System;
-
     public class ApprovalSummary
     {
-        public Guid Id { get; set; }
+        public string Slug { get; set; }
     }
 }

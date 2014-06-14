@@ -59,5 +59,7 @@
             if (Links.Contains(link))
                 link.Deleted = SystemClock.UtcNow;
         }
+
+        public virtual string Random { get; set; }
     }
 }

@@ -29,6 +29,7 @@
             Property(x => x.Joined, m => m.Column(cm => cm.SqlType("datetime2")));
             Property(x => x.Approved, m => m.Column(cm => cm.SqlType("datetime2")));
             Property(x => x.Deleted, m => m.Column(cm => cm.SqlType("datetime2")));
+            Property(x => x.Random, m => m.Formula("NEWID()"));
 
             Bag(x => x.Categories, c =>
             {

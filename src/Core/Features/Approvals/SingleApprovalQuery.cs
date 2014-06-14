@@ -1,16 +1,15 @@
 ﻿namespace Core.Features.Approvals
 {
-    using System;
     using Entities;
     using MediatR;
 
     public class SingleApprovalQuery : IAsyncRequest<ApprovalSummary>
     {
-        public SingleApprovalQuery(Guid id)
+        public SingleApprovalQuery(string id)
         {
             Id = id;
         }
 
-        public Guid Id { get; set; }
+        public string Id { get; set; }
     }
 }

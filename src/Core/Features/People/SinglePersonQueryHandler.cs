@@ -1,9 +1,11 @@
 namespace Core.Features.People
 {
+    using System.Linq;
     using System.Threading.Tasks;
     using Entities;
     using MediatR;
     using NHibernate;
+    using NHibernate.Linq;
     using NHibernate.Transform;
 
     public class SinglePersonQueryHandler : IAsyncRequestHandler<SinglePersonQuery, PersonSummary>
@@ -17,20 +19,14 @@ namespace Core.Features.People
 
         public Task<PersonSummary> Handle(SinglePersonQuery message)
         {
-            return Task.Factory.StartNew(() =>
-            {
-                const string sql = @"select top 1
-                                        [Name]
-                                     ,  [Slug]
-                                     ,  [Email]
-                                     from PersonView p
-                                     where p.Slug = :id";
-
-                return _session.CreateSQLQuery(sql)
-                    .SetString("id", message.Id)
-                    .SetResultTransformer(Transformers.AliasToBean<PersonSummary>())
-                    .UniqueResult<PersonSummary>();
-            });
+            return Task.Factory.StartNew(() => _session.Query<Person>()
+                .Select(x => new PersonSummary
+                {
+                    Name = x.Name,
+                    Slug = x.Slug,
+                    Email = x.Email,
+                })
+                .SingleOrDefault(x => x.Slug == message.Id));
         }
     }
 }
