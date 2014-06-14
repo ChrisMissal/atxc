@@ -38,7 +38,7 @@
 
         public virtual string ImageUrl { get; set; }
 
-        public virtual void AddCategories(IList<CategoryField> categories)
+        public virtual void AddCategories(IEnumerable<CategoryField> categories)
         {
             Categories.TryAddRange(categories, this);
         }

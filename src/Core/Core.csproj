@@ -89,6 +89,7 @@
     <Compile Include="Features\People\PeopleByLocationQueryHandler.cs" />
     <Compile Include="Features\People\PersonCreatedNotification.cs" />
     <Compile Include="Features\People\PersonCreatedNotificationHandler.cs" />
+    <Compile Include="Features\People\PersonFactory.cs" />
     <Compile Include="Features\People\RandomPersonQuery.cs" />
     <Compile Include="Features\People\RandomPersonQueryHandler.cs" />
     <Compile Include="Features\PersonInformation\Information.cs" />

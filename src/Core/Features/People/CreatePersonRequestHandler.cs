@@ -8,31 +8,22 @@ namespace Core.Features.People
     public class CreatePersonRequestHandler : IAsyncRequestHandler<CreatePersonRequest, Person>
     {
         private readonly ISession _session;
-        private readonly IMediator _mediator;
+        private readonly PersonFactory _personFactory;
 
-        public CreatePersonRequestHandler(ISession session, IMediator mediator)
+        public CreatePersonRequestHandler(ISession session, PersonFactory personFactory)
         {
             _session = session;
-            _mediator = mediator;
+            _personFactory = personFactory;
         }
 
         public Task<Person> Handle(CreatePersonRequest message)
         {
             return Task.Factory.StartNew(() =>
             {
-                var person = new Person
-                {
-                    Bio = message.Bio,
-                    Email = message.Email,
-                    Joined = SystemClock.UtcNow,
-                    Location = message.Location,
-                    Name = message.Name,
-                    Slug = message.Name.ToSlug(),
-                };
-                person.AddCategories(message.Categories);
-                person.AddLinks(message.Links);
+                var person = _personFactory.CreatePerson(message.Name, message.Email, message.Bio, message.Location, message.Categories, message.Links);
 
                 _session.SaveOrUpdate(person);
+
                 return person;
             });
         }

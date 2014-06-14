@@ -77,7 +77,9 @@
     <Reference Include="System.Net" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ApprovalSaveTests.cs" />
+    <Compile Include="Features\Approvals\ShouldSaveApproval.cs" />
+    <Compile Include="Features\People\ShouldSavePersonWithCategories.cs" />
+    <Compile Include="Features\People\ShouldSavePersonWithNoExtras.cs" />
     <Compile Include="IntegrationTestDatabaseSettings.cs" />
     <Compile Include="IntegrationTestRegistry.cs" />
     <Compile Include="IntegrationTestsConvention.cs" />
