@@ -1,6 +1,7 @@
 ﻿namespace UI
 {
     using System.Web.Http;
+    using Authorization;
     using Transactions;
 
     public static class WebApiConfig
@@ -14,6 +15,7 @@
                 );
 
             config.Filters.Add(new TransactionAttribute());
+            config.Filters.Add(new TenantFilterAttribute());
         }
     }
 }
