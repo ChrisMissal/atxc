@@ -44,6 +44,20 @@
                     m.Class(typeof (CategoryField));
                 });
             });
+
+            Bag(x => x.Links, l =>
+            {
+                l.Cascade(Cascade.All);
+                l.Inverse(true);
+                l.Key(k => k.Column(GetIdColumnName()));
+            }, r =>
+            {
+                r.OneToMany(m =>
+                {
+                    m.NotFound(NotFoundMode.Exception);
+                    m.Class(typeof (LinkField));
+                });
+            });
         }
     }
 }
