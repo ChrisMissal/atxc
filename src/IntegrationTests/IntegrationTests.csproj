@@ -78,6 +78,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApprovalSaveTests.cs" />
+    <Compile Include="IntegrationTestDatabaseSettings.cs" />
     <Compile Include="IntegrationTestRegistry.cs" />
     <Compile Include="IntegrationTestsConvention.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

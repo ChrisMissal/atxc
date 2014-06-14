@@ -2,9 +2,17 @@
 {
     using System;
 
-    public class Approval
+    public class Approval : IEntity
     {
-        public virtual Guid Id { get; set; }
+        public Approval()
+        {
+            Slug = Guid.NewGuid().ToString("n");
+        }
+
+        public virtual int Id { get; set; }
+        public virtual string Slug { get; protected set; }
         public virtual Person Person { get; set; }
+        public virtual Guid TenantId { get; set; }
+        public virtual DateTime? Deleted { get; protected set; }
     }
 }

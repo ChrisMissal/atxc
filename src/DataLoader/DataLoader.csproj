@@ -59,6 +59,7 @@
     <Compile Include="Generators\NameGenerator.cs" />
     <Compile Include="Generators\PersonInfoGatherer.cs" />
     <Compile Include="LoaderConfig.cs" />
+    <Compile Include="LoaderDatabaseSettings.cs" />
     <Compile Include="Loaders\ILoader.cs" />
     <Compile Include="Loaders\Loader.cs" />
     <Compile Include="Loaders\PersonLoader.cs" />

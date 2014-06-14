@@ -27,7 +27,7 @@
 
             For<ISpecimenBuilder>().Singleton().Use(() => new Fixture());
 
-            For<ISessionFactory>().Singleton().Use(new ConfigurationFactory().GetSessionFactory());
+            For<ISessionFactory>().Singleton().Use(new ConfigurationFactory(new IntegrationTestDatabaseSettings()).GetSessionFactory());
             For<ISession>().Singleton().Use(ctx => ctx.GetInstance<ISessionFactory>().OpenSession());
         }
     }

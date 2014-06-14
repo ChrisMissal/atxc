@@ -24,7 +24,7 @@
         public void should_save_Approval()
         {
             var approval = _session.Get<Approval>(_approval.Id);
-            approval.Id.ShouldNotBe(Guid.Empty);
+            approval.Slug.ShouldNotBe(Guid.Empty.ToString());
         }
     }
 }

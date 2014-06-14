@@ -1,6 +1,6 @@
 namespace Core
 {
-    public interface IEntity
+    public interface IEntity : ITenanted
     {
         int Id { get; }
 

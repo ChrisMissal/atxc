@@ -3,12 +3,7 @@ namespace Core
     using System;
     using Entities;
 
-    public interface IDeletable
-    {
-        DateTime? Deleted { get; }
-    }
-
-    public interface IField : IDeletable
+    public interface IField : IDeletable, ITenanted
     {
         Person Person { get; set; }
         string Value { get; set; }

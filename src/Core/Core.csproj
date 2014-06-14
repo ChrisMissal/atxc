@@ -65,6 +65,7 @@
   <ItemGroup>
     <Compile Include="Constants.cs" />
     <Compile Include="Data\ConfigurationFactory.cs" />
+    <Compile Include="Data\DatabaseSettings.cs" />
     <Compile Include="Data\Mappings\ApprovalMapping.cs" />
     <Compile Include="Data\Mappings\CategoryFieldMapping.cs" />
     <Compile Include="Data\Mappings\FieldMapping.cs" />
@@ -97,9 +98,11 @@
     <Compile Include="Features\People\CreatePersonRequestHandler.cs" />
     <Compile Include="Features\People\SinglePersonQuery.cs" />
     <Compile Include="Features\People\SinglePersonQueryHandler.cs" />
+    <Compile Include="IDeletable.cs" />
     <Compile Include="IEntity.cs" />
     <Compile Include="IField.cs" />
     <Compile Include="IHaveEmail.cs" />
+    <Compile Include="ITenanted.cs" />
     <Compile Include="SystemClock.cs" />
     <Compile Include="Enumeration\Category.cs" />
     <Compile Include="Enumeration\Enumeration.cs" />

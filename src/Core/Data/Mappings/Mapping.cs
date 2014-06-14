@@ -12,6 +12,8 @@
                 m.Generator(Generators.HighLow);
                 m.Column(GetIdColumnName());
             });
+            Property(x => x.TenantId, m => m.NotNullable(true));
+            Filter("tenant", fm => { });
         }
 
         public static string GetIdColumnName()

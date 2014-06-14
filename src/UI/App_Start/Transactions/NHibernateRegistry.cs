@@ -9,7 +9,7 @@
     {
         public NHibernateRegistry()
         {
-            For<ISessionFactory>().Singleton().Use(new ConfigurationFactory().GetSessionFactory());
+            For<ISessionFactory>().Singleton().Use(new ConfigurationFactory(DatabaseSettings.Default).GetSessionFactory());
             For<ISession>().HybridHttpOrThreadLocalScoped().Use(ctx => ctx.GetInstance<ISessionFactory>().OpenSession());
         }
     }

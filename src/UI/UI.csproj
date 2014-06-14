@@ -176,6 +176,7 @@
     <Compile Include="App_Start\Transactions\NHibernateRegistry.cs" />
     <Compile Include="App_Start\Transactions\TransactionAttribute.cs" />
     <Compile Include="App_Start\ValidationConfig.cs" />
+    <Compile Include="App_Start\Authorization\TenantFilterAttribute.cs" />
     <Compile Include="Controllers\ApprovalController.cs" />
     <Compile Include="Validation\ValidationResponseFilterAttribute.cs" />
     <Compile Include="App_Start\Bootstrapper.cs" />

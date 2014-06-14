@@ -5,7 +5,7 @@ namespace Core.Features.People
     using Enumeration;
     using MediatR;
 
-    public class CreatePersonRequest : IAsyncRequest<Person>, IEntity
+    public class CreatePersonRequest : IAsyncRequest<Person>
     {
         public int Id { get; private set; }
 

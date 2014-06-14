@@ -21,6 +21,7 @@ namespace Core.Data.Mappings
                 });
                 
             });
+            Property(x => x.TenantId, m => m.NotNullable(true));
             Property(x => x.Value, m => m.UniqueKey("PersonValue"));
             Property(x => x.Created, m => m.Column(cm =>
             {
@@ -28,6 +29,7 @@ namespace Core.Data.Mappings
                 cm.NotNullable(true);
             }));
             Property(x => x.Deleted, m => m.Column(cm => cm.SqlType("datetime2")));
+            Filter("tenant", fm => { });
         }
 
         public static string GetTableName()

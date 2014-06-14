@@ -12,7 +12,7 @@
         {
             var config = new LoaderConfig(args);
 
-            var factory = new ConfigurationFactory();
+            var factory = new ConfigurationFactory(DatabaseSettings.Default);
             var sessionFactory = factory.GetSessionFactory();
 
             var gatherer = new PersonInfoGatherer();

@@ -12,6 +12,8 @@
             Categories = new List<CategoryField>();
         }
 
+        public virtual Guid TenantId { get; set; }
+
         public virtual int Id { get; protected set; }
 
         public virtual string Slug { get; set; }

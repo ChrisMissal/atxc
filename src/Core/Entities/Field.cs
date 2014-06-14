@@ -4,6 +4,8 @@
 
     public abstract class Field<T> : IField, IEquatable<Field<T>>
     {
+        public virtual Guid TenantId { get; set; }
+
         public virtual Person Person { get; set; }
 
         public virtual string Value { get; set; }
