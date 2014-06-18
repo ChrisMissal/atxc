@@ -1,6 +1,7 @@
-function HomePage($scope, Category, Location) {
+function HomePage($scope, Category, Location, Information) {
     $scope.categories = Category.all();
     $scope.location = Location.all();
+    $scope.information = Information.first();
 }
 
 function PersonDetailCtrl($scope, $routeParams, Person) {

@@ -1,6 +1,6 @@
 var partialsDir = 'Content/app/partials/';
 
-angular.module('people', ['personServices', 'categoryServices', 'locationServices', 'approvalServices']).
+angular.module('people', ['personServices', 'categoryServices', 'locationServices', 'approvalServices', 'informationServices']).
     config(['$routeProvider', function ($routeProvider) {
         $routeProvider.
             when('/', { templateUrl: partialsDir + 'index.html', controller: HomePage }).

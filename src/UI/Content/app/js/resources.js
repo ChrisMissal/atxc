@@ -31,5 +31,11 @@ angular.module('approvalServices', ['ngResource']).
         });
     });
 
+angular.module('informationServices', ['ngResource']).
+    factory('Information', function($resource) {
+        return $resource('/api/information', {}, {
+            first: { method: 'GET' }
+        });
+    });
 // http://docs.angularjs.org/tutorial/step_11
 
