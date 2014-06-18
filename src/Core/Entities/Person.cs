@@ -2,6 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.Linq;
     using Enumeration;
 
     public class Person : IEntity, IDeletable, IHaveEmail
@@ -46,7 +47,7 @@
         public virtual void RemoveCategory(CategoryField category)
         {
             if (Categories.Contains(category))
-                category.Deleted = SystemClock.UtcNow;
+                Categories.Remove(category);
         }
 
         public virtual void AddLinks(IEnumerable<LinkField> links)
@@ -57,7 +58,7 @@
         public virtual void RemoveLink(LinkField link)
         {
             if (Links.Contains(link))
-                link.Deleted = SystemClock.UtcNow;
+                Links.Remove(link);
         }
 
         public virtual string Random { get; set; }

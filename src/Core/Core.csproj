@@ -72,6 +72,7 @@
     <Compile Include="Data\Mappings\LinkFieldMapping.cs" />
     <Compile Include="Data\Mappings\LocationType.cs" />
     <Compile Include="Data\Mappings\Mapping.cs" />
+    <Compile Include="Data\Mappings\MappingExtensions.cs" />
     <Compile Include="Data\Mappings\PersonMapping.cs" />
     <Compile Include="Entities\Approval.cs" />
     <Compile Include="Entities\CategoryField.cs" />

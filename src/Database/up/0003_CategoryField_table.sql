@@ -1,11 +1,11 @@
 create table CategoryField (
-    [Value] NVARCHAR(255) not null,
+    CategoryFieldId INT not null,
     PersonId INT not null,
     TenantId UNIQUEIDENTIFIER not null,
+    [Value] NVARCHAR(255) null,
     Created datetime2 not null,
-    Deleted datetime2 null,
-    primary key ([Value], PersonId),
-    unique ([Value], PersonId)
+    primary key (CategoryFieldId),
+    unique (PersonId, [Value])
 )
 
 alter table CategoryField 

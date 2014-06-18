@@ -1,11 +1,11 @@
 create table LinkField (
-    [Value] NVARCHAR(255) not null,
+    LinkFieldId INT not null,
     PersonId INT not null,
     TenantId UNIQUEIDENTIFIER not null,
+    [Value] NVARCHAR(255) null,
     Created datetime2 not null,
-    Deleted datetime2 null,
-    primary key ([Value], PersonId),
-    unique ([Value], PersonId)
+    primary key (LinkFieldId),
+    unique (PersonId, [Value])
 )
 
 alter table LinkField 

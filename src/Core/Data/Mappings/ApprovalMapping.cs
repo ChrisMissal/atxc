@@ -11,7 +11,7 @@
             Property(x => x.Deleted, m => m.Column(cm => cm.SqlType("datetime2")));
             ManyToOne(p => p.Person, m =>
             {
-                m.Column(PersonMapping.GetIdColumnName());
+                m.Column(typeof(Person).GetIdColumnName());
                 m.NotNullable(true);
                 m.Class(typeof(Person));
             });

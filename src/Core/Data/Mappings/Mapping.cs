@@ -16,9 +16,9 @@
             Filter("tenant", fm => { });
         }
 
-        public static string GetIdColumnName()
+        protected string GetIdColumnName()
         {
-            return typeof (T).Name + "Id";
+            return typeof (T).GetIdColumnName();
         }
     }
 }

@@ -4,6 +4,8 @@
 
     public abstract class Field<T> : IField, IEquatable<Field<T>>
     {
+        public virtual int Id { get; protected set; }
+
         public virtual Guid TenantId { get; set; }
 
         public virtual Person Person { get; set; }
@@ -11,8 +13,6 @@
         public virtual string Value { get; set; }
 
         public virtual DateTime? Created { get; set; }
-
-        public virtual DateTime? Deleted { get; set; }
 
         public virtual bool Equals(Field<T> other)
         {

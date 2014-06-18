@@ -79,7 +79,9 @@
   <ItemGroup>
     <Compile Include="Features\Approvals\ShouldSaveApproval.cs" />
     <Compile Include="Features\People\ShouldSavePersonWithCategories.cs" />
+    <Compile Include="Features\People\ShouldSavePersonWithCategoriesRemoved.cs" />
     <Compile Include="Features\People\ShouldSavePersonWithLinks.cs" />
+    <Compile Include="Features\People\ShouldSavePersonWithLinksRemoved.cs" />
     <Compile Include="Features\People\ShouldSavePersonWithNoExtras.cs" />
     <Compile Include="IntegrationTestDatabaseSettings.cs" />
     <Compile Include="IntegrationTestRegistry.cs" />
