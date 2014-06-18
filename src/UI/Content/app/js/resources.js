@@ -27,7 +27,9 @@ angular.module('locationServices', ['ngResource']).
 angular.module('approvalServices', ['ngResource']).
     factory('Approval', function($resource) {
         return $resource('/api/approval/:id', { id: '@id' }, {
-            first: { method: 'GET' }
+            first: { method: 'GET' },
+            approve: { method: 'POST' },
+            deny: { method: 'DELETE' }
         });
     });
 

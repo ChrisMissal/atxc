@@ -23,5 +23,15 @@
 
             return approval;
         }
+
+        public async Task<PersonSummary> Post(string id)
+        {
+            return await _mediator.SendAsync(new ApproveProfileCreateRequest(id));
+        }
+
+        public void Delete(string id)
+        {
+            _mediator.Send(new DenyProfileCreateRequest(id));
+        }
     }
 }

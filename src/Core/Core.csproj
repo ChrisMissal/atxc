@@ -82,6 +82,10 @@
     <Compile Include="Entities\Person.cs" />
     <Compile Include="Entities\PersonSummary.cs" />
     <Compile Include="Entities\ApprovalSummary.cs" />
+    <Compile Include="Features\Approvals\ApproveProfileCreateRequest.cs" />
+    <Compile Include="Features\Approvals\ApproveProfileCreateRequestHandler.cs" />
+    <Compile Include="Features\Approvals\DenyProfileCreateRequest.cs" />
+    <Compile Include="Features\Approvals\DenyProfileCreateRequestHandler.cs" />
     <Compile Include="Features\Approvals\SingleApprovalQuery.cs" />
     <Compile Include="Features\Approvals\SingleApprovalQueryHandler.cs" />
     <Compile Include="Features\People\PeopleByCategoryQuery.cs" />

@@ -51,6 +51,18 @@ function RandomPersonCtrl($window, Person) {
     });
 }
 
-function ApprovalDetailCtrl($scope, $routeParams, Approval) {
+function ApprovalDetailCtrl($scope, $routeParams, $window, Approval) {
     $scope.approval = Approval.first($routeParams);
+
+    $scope.approve = function () {
+        Approval.approve({ id: $routeParams.id }, function(result) {
+            $window.location.href = result.url;
+        });
+    };
+
+    $scope.deny = function () {
+        Approval.deny({ id: $routeParams.id }, function() {
+            $window.location.href = '/';
+        });
+    }
 }
