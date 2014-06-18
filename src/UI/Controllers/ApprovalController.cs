@@ -17,7 +17,8 @@
 
         public async Task<ApprovalSummary> Get(string id)
         {
-            var approval = await _mediator.SendAsync(new SingleApprovalQuery(id));
+            var request = new SingleApprovalQuery { Id = id };
+            var approval = await _mediator.SendAsync(request);
 
             approval.Person.ImageUrl = approval.Person.GetImageUrl();
 
@@ -26,12 +27,14 @@
 
         public async Task<PersonSummary> Post(string id)
         {
-            return await _mediator.SendAsync(new ApproveProfileCreateRequest(id));
+            var request = new ApproveProfileCreateRequest { Id = id };
+            return await _mediator.SendAsync(request);
         }
 
         public void Delete(string id)
         {
-            _mediator.Send(new DenyProfileCreateRequest(id));
+            var request = new DenyProfileCreateRequest { Id = id };
+            _mediator.Send(request);
         }
     }
 }

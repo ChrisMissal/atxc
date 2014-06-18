@@ -26,7 +26,8 @@
 
         public async Task<PersonSummary> Get(string id)
         {
-            var person = await _mediator.SendAsync(new SinglePersonQuery(id));
+            var request = new SinglePersonQuery { Id = id };
+            var person = await _mediator.SendAsync(request);
 
             person.ImageUrl = person.GetImageUrl();
 

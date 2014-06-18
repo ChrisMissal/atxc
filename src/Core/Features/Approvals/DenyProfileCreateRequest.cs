@@ -4,11 +4,6 @@
 
     public class DenyProfileCreateRequest : IRequest<Unit>
     {
-        public DenyProfileCreateRequest(string id)
-        {
-            Id = id;
-        }
-
         public string Id { get; set; }
     }
 }

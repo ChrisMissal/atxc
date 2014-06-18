@@ -5,11 +5,6 @@
 
     public class SinglePersonQuery : IAsyncRequest<PersonSummary>
     {
-        public SinglePersonQuery(string id)
-        {
-            Id = id;
-        }
-
         public string Id { get; set; }
     }
 }
