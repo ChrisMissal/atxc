@@ -24,8 +24,13 @@ namespace Core.Features.Approvals
                 .Select(x => new ApprovalSummary
                 {
                     Slug = x.Slug,
-                })
-                .SingleOrDefault());
+                    Person = new PersonSummary
+                    {
+                        Name = x.Person.Name,
+                        Email = x.Person.Email,
+                        Slug = x.Person.Slug,
+                    },
+                }).SingleOrDefault());
         }
     }
 }

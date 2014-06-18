@@ -19,6 +19,8 @@
         {
             var approval = await _mediator.SendAsync(new SingleApprovalQuery(id));
 
+            approval.Person.ImageUrl = approval.Person.GetImageUrl();
+
             return approval;
         }
     }

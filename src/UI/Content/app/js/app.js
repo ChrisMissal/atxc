@@ -13,4 +13,13 @@ angular.module('people', ['personServices', 'categoryServices', 'locationService
             when('/random', { templateUrl: partialsDir + 'profile-detail.html', controller: RandomPersonCtrl }).
             when('/approval/:id', { templateUrl: partialsDir + 'approval-detail.html', controller: ApprovalDetailCtrl }).
             otherwise({ redirectTo: '/' });
-    }]);
+    }]).
+    directive('profileDetail', function () {
+        return {
+            restrict: 'E',
+            scope: {
+                person: '=info'
+            },
+            templateUrl: partialsDir + 'profile-detail.html'
+        };
+    });
