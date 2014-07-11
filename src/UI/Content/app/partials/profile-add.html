@@ -1,53 +1,37 @@
-﻿
-<form name="addProfile" class="custom" ng-controller="PersonCreateCtrl">
+﻿<form name="addProfile" class="custom large-10 push-1" ng-controller="PersonCreateCtrl">
     <fieldset>
         <legend>Join the Creatives</legend>
-
         <div class="row">
-            <div class="large-9 push-3 columns">
-                <input id="profile-fullName" name="fullName" class="large-6 columns" ng-model="profile.name" required />
-                <span class="error" ng-show="addProfile.fullname.$error.required">Required!</span>
+            <div class="large-6 columns">
+                <label for="profile-fullName">Full Name
+                    <input type="text" id="profile-fullName" name="fullName" ng-model="profile.name" required />
+                    <span class="error" ng-show="addProfile.fullname.$error.required">Required!</span>
+                </label>
             </div>
-            <div class="large-3 pull-9 columns">
-                <label for="profile-fullName">Full Name:</label>
+            <div class="large-6 columns">
+                <label for="profile-email">Email Address
+                    <input type="text" id="profile-email" name="email" ng-model="profile.email" required />
+                    <span class="error" ng-show="addProfile.email.$error.required">Required!</span>
+                </label>
             </div>
         </div>
-
         <div class="row">
-            <div class="large-9 push-3 columns">
-                <input id="profile-email" name="email" class="large-6 columns" ng-model="profile.email" required />
-                <span class="error" ng-show="addProfile.email.$error.required">Required!</span>
-            </div>
-            <div class="large-3 pull-9 columns">
-                <label for="profile-email">Email Address:</label>
+            <div class="large-12 columns">
+                <label>How are you creative? (15-160 characters)
+                    <textarea id="profile-bio" name="bio" ng-model="profile.bio" required></textarea>
+                    <span class="error" ng-show="addProfile.bio.$error.required">Required!</span>
+                </label>
             </div>
         </div>
-
-         <div class="row">
-            <div class="large-9 push-3 columns">
-                <textarea id="profile-bio" name="bio" class="large-6 columns" ng-model="profile.bio" required></textarea>
-                <span class="error" ng-show="addProfile.bio.$error.required">Required!</span>
-            </div>
-            <div class="large-3 pull-9 columns">
-                <label for="profile-bio">Bio (15-160 characters):</label>
-            </div>
-        </div>
-
         <div class="row">
-            <div class="large-9 push-3 columns">
-                <div class="small-6">
-                    <select id="profile-location" name="location" ng-model="profile.location" ng-options="l.displayName for l in locations" required></select>
-                </div>
-                <span class="error" ng-show="addProfile.location.$error.required">Required!</span><br />
+            <div class="large-6 columns">
+                <label>Location
+                    <select id="profile-location" class="radius" name="location" ng-model="profile.location" ng-options="l.displayName for l in locations" required></select>
+                </label>
             </div>
-            <div class="large-3 pull-9 columns">
-                <label for="profile-location">Location:</label>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="large-6 push-3 columns">
-                <ul class="small-block-grid-3">
+            <div class="large-6 columns">
+                <label>Categories</label><br />
+                <ul class="large-block-grid-3">
                     <li ng-repeat="category in categories">
                         <label for="profile-category-{{ category.value }}">
                             <input
@@ -59,17 +43,11 @@
                     </li>
                 </ul>
             </div>
-            <div class="large-3 pull-9 columns">
-                <label>Categories:</label>
-            </div>
         </div>
-
         <div class="row">
-            <div class="large-9 push-3 columns">
-                <button ng-click="save()" ng-disabled="addProfile.$invalid">Submit</button>
+            <div class="large-12 columns">
+                <button ng-click="save()" ng-disabled="addProfile.$invalid" class="radius button right">Submit</button>
             </div>
-            <div class="large-3 pull-9 columns">&nbsp;</div>
         </div>
-
     </fieldset>
 </form>
