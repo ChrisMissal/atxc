@@ -4,6 +4,7 @@
     using System.Collections.Generic;
     using System.Linq;
     using System.Reflection;
+    using Core.Data;
     using Fixie;
     using NHibernate;
     using StructureMap;
@@ -53,8 +54,20 @@
         {
             return arg.GetParameters().Select(parameter => new[]
                 {
-                    _container.GetInstance(parameter.ParameterType)
+                    GetInstance(parameter)
                 });
+        }
+
+        private object GetInstance(ParameterInfo parameter)
+        {
+            var instance = _container.GetInstance(parameter.ParameterType);
+            if (instance is ISession)
+            {
+                var session = instance as ISession;
+                var databaseSettings = _container.GetInstance<DatabaseSettings>();
+                session.EnableFilter("tenant").SetParameter("TenantId", databaseSettings.TenantId);
+            }
+            return instance;
         }
     }
 }
